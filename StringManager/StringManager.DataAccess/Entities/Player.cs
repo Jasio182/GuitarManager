@@ -11,7 +11,7 @@ namespace GuitarManager.DataAccess.Entities
         [Required]
         public string CareStyle { get; set; }
 
-        public int AccountID { get; set; }
+        public Account AccountID { get; set; }
 
         public List<MyInstrument> MyInstruments { get; set; }
     }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GuitarManager.DataAccess.Entities
 {
@@ -15,6 +16,7 @@ namespace GuitarManager.DataAccess.Entities
         [Required]
         public bool IsAdmin { get; set; }
 
-        public int PlayerID { get; set; }
+        [ForeignKey("Account")]
+        public Player PlayerID { get; set; }
     }
 }
