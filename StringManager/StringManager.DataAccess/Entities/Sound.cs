@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GuitarManager.DataAccess.Entities
 {
@@ -9,6 +10,8 @@ namespace GuitarManager.DataAccess.Entities
 
         [Required]
         public double Frequency { get; set; }
+
+        public List<InstalledString> InstalledStrings { get; set; }
 
     }
 }

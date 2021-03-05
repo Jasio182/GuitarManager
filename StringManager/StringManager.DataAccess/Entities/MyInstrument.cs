@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,5 +16,10 @@ namespace GuitarManager.DataAccess.Entities
         [Column(TypeName = "Date")]
         public DateTime LastDeepCleaning { get; set; }
 
+        public int InstrumentID { get; set; }
+
+        public int PlayerID { get; set; }
+
+        public List<InstalledString> InstalledStrings { get; set; }
     }
 }

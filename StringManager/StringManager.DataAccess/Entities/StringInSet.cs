@@ -6,5 +6,9 @@ namespace GuitarManager.DataAccess.Entities
     {
         [Required]
         public int StringPosition { get; set; }
+
+        public int StringID { get; set; }
+
+        public int StringSetID { get; set; }
     }
 }

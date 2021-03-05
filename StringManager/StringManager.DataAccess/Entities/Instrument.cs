@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GuitarManager.DataAccess.Entities
 {
@@ -16,5 +17,11 @@ namespace GuitarManager.DataAccess.Entities
 
         [Required]
         public int ScaleLenghtTreble { get; set; }
+
+        public List<MyInstrument> MyInstruments { get; set }
+
+        public int GuitarTypeID { get; set; }
+
+        public int GuitarManufacturerID { get; set; }
     }
 }

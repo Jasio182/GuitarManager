@@ -6,5 +6,11 @@ namespace GuitarManager.DataAccess.Entities
     {
         [Required]
         public int StringPosition { get; set; }
+
+        public int MyInstrumentID { get; set; }
+
+        public int StringID { get; set; }
+
+        public int SoundID { get; set; }
     }
 }

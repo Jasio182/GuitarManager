@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GuitarManager.DataAccess.Entities
 {
@@ -10,6 +11,10 @@ namespace GuitarManager.DataAccess.Entities
 
         [Required]
         public int NumberOfStrings { get; set; }
+
+        public List<StringInSet> StringsInSets { get; set; }
+
+        public int GuitarTypeID { get; set; }
 
     }
 }

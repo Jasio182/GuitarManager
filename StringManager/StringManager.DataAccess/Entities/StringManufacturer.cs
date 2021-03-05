@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GuitarManager.DataAccess.Entities
 {
@@ -7,5 +8,7 @@ namespace GuitarManager.DataAccess.Entities
         [Required]
         [MaxLength(150)]
         public string StringManufacturerName { get; set; }
+
+        public List<String> Strings { get; set; }
     }
 }
