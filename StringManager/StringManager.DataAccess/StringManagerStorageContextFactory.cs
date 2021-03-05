@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace StringManager.DataAccess
+namespace GuitarManager.DataAccess
 {
     class StringManagerStorageContextFactory : IDesignTimeDbContextFactory<StringManagerStorageContext>
     {

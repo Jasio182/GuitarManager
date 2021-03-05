@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace StringManager.DataAccess.Entities
+namespace GuitarManager.DataAccess.Entities
 {
-    class Instrument
+    class Instrument : EntityBase
     {
-        public int id { get; set; }
-        public string model { get; set; }
-        public int numberOfStrings { get; set; }
-        public int scaleLenghtBass { get; set; }
-        public int scaleLenghtTreble { get; set; }
+        [Required]
+        [MaxLength(300)]
+        public string Model { get; set; }
 
+        [Required]
+        public int NumberOfStrings { get; set; }
+
+        [Required]
+        public int ScaleLenghtBass { get; set; }
+
+        [Required]
+        public int ScaleLenghtTreble { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 
 namespace GuitarManager.DataAccess.Entities
 {
-    class GuitarManufacturer : EntityBase
+    class GuitarType : EntityBase
     {
         [Required]
-        [MaxLength(150)]
-        public string GuitarManufacturerName { get; set; }
+        [MaxLength(300)]
+        public string Type { get; set; }
     }
 }

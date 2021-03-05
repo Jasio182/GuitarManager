@@ -1,6 +1,6 @@
 using System;
 
-namespace StringManager
+namespace GuitarManager
 {
     public class WeatherForecast
     {
