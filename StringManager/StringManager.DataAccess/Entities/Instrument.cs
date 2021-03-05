@@ -18,7 +18,7 @@ namespace GuitarManager.DataAccess.Entities
         [Required]
         public int ScaleLenghtTreble { get; set; }
 
-        public List<MyInstrument> MyInstruments { get; set }
+        public List<MyInstrument> MyInstruments { get; set; }
 
         public int GuitarTypeID { get; set; }
 

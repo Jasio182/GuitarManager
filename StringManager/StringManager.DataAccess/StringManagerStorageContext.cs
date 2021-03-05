@@ -29,5 +29,9 @@ namespace GuitarManager.DataAccess
         public DbSet<StringSet> StringSets { get; set; }
 
         public DbSet<StringType> StringTypes { get; set; }
+
+        public DbSet<Account> Accounts { get; set; }
+
+        public DbSet<Player> Players { get; set; }
     }
 }
