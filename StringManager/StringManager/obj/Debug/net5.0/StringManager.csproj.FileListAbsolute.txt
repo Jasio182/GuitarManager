@@ -26,3 +26,4 @@ D:\Repositories\StringManager\StringManager\StringManager\obj\Debug\net5.0\Strin
 D:\Repositories\StringManager\StringManager\StringManager\obj\Debug\net5.0\ref\StringManager.dll
 D:\Repositories\StringManager\StringManager\StringManager\obj\Debug\net5.0\StringManager.pdb
 D:\Repositories\StringManager\StringManager\StringManager\obj\Debug\net5.0\StringManager.genruntimeconfig.cache
+D:\Repositories\StringManager\StringManager\StringManager\obj\Debug\net5.0\StringManager.csprojAssemblyReference.cache
