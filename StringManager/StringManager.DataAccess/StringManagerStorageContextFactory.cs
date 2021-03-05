@@ -8,7 +8,7 @@ namespace GuitarManager.DataAccess
         public StringManagerStorageContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<StringManagerStorageContext>();
-            optionsBuilder.UseSqlServer("Data Source=LAPTOP-Q60QSH31.\\LOCALSQL;Initial Catalog=StringManagerStorage;Persist Security Info=True;User ID=StringManagerAPI;Password=***********");
+            optionsBuilder.UseSqlServer("Data Source=LAPTOP-Q60QSH31.\\LOCALSQL;Initial Catalog=StringManagerStorage;Persist Security Info=True;User ID=StringManagerAPI;Password=Strings");
             return new StringManagerStorageContext(optionsBuilder.Options);
         }
     }

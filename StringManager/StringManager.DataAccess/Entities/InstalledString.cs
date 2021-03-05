@@ -2,7 +2,7 @@
 
 namespace GuitarManager.DataAccess.Entities
 {
-    class InstalledStrings : EntityBase
+    class InstalledString : EntityBase
     {
         [Required]
         public int StringPosition { get; set; }
