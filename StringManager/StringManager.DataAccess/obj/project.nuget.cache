@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fwUSMCeHeLF6fF5zZ6lPHs2aH1wS1yYC0R6aQx31Nj+X+6HyjrtMaKi2Uud6zTrZ0xYqrzoKX8l0PqSmOpd/Vg==",
+  "dgSpecHash": "u52Bcnra21fJEPju69NXaemBECCB13QJLUCZ0+KD17rdUw8JpiIpWXTvzP9qxzOPnzLImS39281nIvCqp1bW/A==",
   "success": true,
-  "projectFilePath": "D:\\Repositories\\StringManager\\StringManager\\StringManager.DataAccess\\StringManager.DataAccess.csproj",
+  "projectFilePath": "D:\\Repositories\\StringManager\\StringManager\\StringManager.DataAccess\\GuitarManager.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jasio\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

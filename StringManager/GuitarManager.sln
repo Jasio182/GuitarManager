@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringManager", "StringManager\StringManager.csproj", "{0DCEAD44-ACEC-4B7D-A6D7-2442590DDD13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuitarManager", "StringManager\GuitarManager.csproj", "{0DCEAD44-ACEC-4B7D-A6D7-2442590DDD13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringManager.DataAccess", "StringManager.DataAccess\StringManager.DataAccess.csproj", "{89402A20-99B6-4AF1-A4F9-A42539F82B54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuitarManager.DataAccess", "StringManager.DataAccess\GuitarManager.DataAccess.csproj", "{89402A20-99B6-4AF1-A4F9-A42539F82B54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

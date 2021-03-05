@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QRrwps2mB7PGhqYMmhPChNv5/MWYISnLA9ocyXTUczgkd9CV4EloF81zYBTHNI4fc4S6MUoecEgydyR4xrat3g==",
+  "dgSpecHash": "N2uS+2Inn0HpjHy1GclBm6TYU7ArzBrXpEfwdWCYyUWqUHMkXwgQciphbNVWWKqrR2XIrnAZYEmlxWZ1V2gKlg==",
   "success": true,
-  "projectFilePath": "D:\\Repositories\\StringManager\\StringManager\\StringManager\\StringManager.csproj",
+  "projectFilePath": "D:\\Repositories\\StringManager\\StringManager\\StringManager\\GuitarManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jasio\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

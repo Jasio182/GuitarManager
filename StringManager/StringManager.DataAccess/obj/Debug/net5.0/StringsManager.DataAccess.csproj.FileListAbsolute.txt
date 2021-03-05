@@ -1,0 +1,15 @@
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\StringsManager.DataAccess.deps.json
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\StringsManager.DataAccess.runtimeconfig.json
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\StringsManager.DataAccess.runtimeconfig.dev.json
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\StringsManager.DataAccess.dll
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\ref\StringsManager.DataAccess.dll
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\StringsManager.DataAccess.pdb
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\StringsManager.DataAccess.csprojAssemblyReference.cache
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\StringsManager.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\StringsManager.DataAccess.AssemblyInfoInputs.cache
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\StringsManager.DataAccess.AssemblyInfo.cs
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\StringsManager.DataAccess.csproj.CoreCompileInputs.cache
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\StringsManager.DataAccess.dll
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\ref\StringsManager.DataAccess.dll
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\StringsManager.DataAccess.pdb
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\StringsManager.DataAccess.genruntimeconfig.cache

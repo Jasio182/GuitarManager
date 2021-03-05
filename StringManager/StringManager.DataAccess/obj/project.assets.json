@@ -5803,9 +5803,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Repositories\\StringManager\\StringManager\\StringManager.DataAccess\\StringManager.DataAccess.csproj",
-      "projectName": "StringManager.DataAccess",
-      "projectPath": "D:\\Repositories\\StringManager\\StringManager\\StringManager.DataAccess\\StringManager.DataAccess.csproj",
+      "projectUniqueName": "D:\\Repositories\\StringManager\\StringManager\\StringManager.DataAccess\\GuitarManager.DataAccess.csproj",
+      "projectName": "GuitarManager.DataAccess",
+      "projectPath": "D:\\Repositories\\StringManager\\StringManager\\StringManager.DataAccess\\GuitarManager.DataAccess.csproj",
       "packagesPath": "C:\\Users\\Jasio\\.nuget\\packages\\",
       "outputPath": "D:\\Repositories\\StringManager\\StringManager\\StringManager.DataAccess\\obj\\",
       "projectStyle": "PackageReference",

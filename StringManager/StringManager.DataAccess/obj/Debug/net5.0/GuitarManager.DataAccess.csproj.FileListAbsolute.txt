@@ -1,0 +1,15 @@
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\GuitarManager.DataAccess.deps.json
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\GuitarManager.DataAccess.runtimeconfig.json
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\GuitarManager.DataAccess.runtimeconfig.dev.json
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\GuitarManager.DataAccess.dll
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\ref\GuitarManager.DataAccess.dll
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\bin\Debug\net5.0\GuitarManager.DataAccess.pdb
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\GuitarManager.DataAccess.csprojAssemblyReference.cache
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\GuitarManager.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\GuitarManager.DataAccess.AssemblyInfoInputs.cache
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\GuitarManager.DataAccess.AssemblyInfo.cs
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\GuitarManager.DataAccess.csproj.CoreCompileInputs.cache
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\GuitarManager.DataAccess.dll
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\ref\GuitarManager.DataAccess.dll
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\GuitarManager.DataAccess.pdb
+D:\Repositories\StringManager\StringManager\StringManager.DataAccess\obj\Debug\net5.0\GuitarManager.DataAccess.genruntimeconfig.cache
