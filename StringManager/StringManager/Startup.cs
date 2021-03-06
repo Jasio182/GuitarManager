@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using GuitarManager.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace GuitarManager
 {
@@ -21,6 +22,8 @@ namespace GuitarManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddDbContext<GuitarManagerStorageContext>
+                (opt => opt.UseSqlServer(this.Configuration.GetConnectionString("GuitarManagerDatabaseConnection")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

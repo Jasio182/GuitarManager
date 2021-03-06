@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GuitarManager.DataAccess
 {
-    class GuitarManagerStorageContext : DbContext
+    public class GuitarManagerStorageContext : DbContext
     {
         public GuitarManagerStorageContext(DbContextOptions<GuitarManagerStorageContext> opt) : base(opt) { }
 
