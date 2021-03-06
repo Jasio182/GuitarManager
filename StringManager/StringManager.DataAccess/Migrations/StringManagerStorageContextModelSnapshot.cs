@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GuitarManager.DataAccess.Migrations
 {
-    [DbContext(typeof(StringManagerStorageContext))]
+    [DbContext(typeof(GuitarManagerStorageContext))]
     partial class StringManagerStorageContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

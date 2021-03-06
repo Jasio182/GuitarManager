@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GuitarManager.DataAccess.Migrations
 {
-    [DbContext(typeof(StringManagerStorageContext))]
+    [DbContext(typeof(GuitarManagerStorageContext))]
     [Migration("20210305231000_ForeignKey_Account-Player_Fix")]
     partial class ForeignKey_AccountPlayer_Fix
     {

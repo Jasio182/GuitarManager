@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GuitarManager.DataAccess.Migrations
 {
-    [DbContext(typeof(StringManagerStorageContext))]
+    [DbContext(typeof(GuitarManagerStorageContext))]
     [Migration("20210305224918_Relations")]
     partial class Relations
     {

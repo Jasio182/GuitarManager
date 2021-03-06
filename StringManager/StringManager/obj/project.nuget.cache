@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "N2uS+2Inn0HpjHy1GclBm6TYU7ArzBrXpEfwdWCYyUWqUHMkXwgQciphbNVWWKqrR2XIrnAZYEmlxWZ1V2gKlg==",
+  "dgSpecHash": "G75Bb95WcrfwRCda2Nq84hPlycQgzxwJC7Hb/djIt0mJmA21S80vzW5iTTkow+3oy0K4/fqTqn0/v10Jyd3sbA==",
   "success": true,
   "projectFilePath": "D:\\Repositories\\StringManager\\StringManager\\StringManager\\GuitarManager.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.3\\microsoft.entityframeworkcore.design.5.0.3.nupkg.sha512",
     "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.3\\microsoft.entityframeworkcore.relational.5.0.3.nupkg.sha512",
     "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.3\\microsoft.entityframeworkcore.sqlserver.5.0.3.nupkg.sha512",
+    "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\5.0.3\\microsoft.entityframeworkcore.tools.5.0.3.nupkg.sha512",
     "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",

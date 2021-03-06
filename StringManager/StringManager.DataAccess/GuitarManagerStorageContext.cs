@@ -3,12 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GuitarManager.DataAccess
 {
-    class StringManagerStorageContext : DbContext
+    class GuitarManagerStorageContext : DbContext
     {
-        public StringManagerStorageContext(DbContextOptions<StringManagerStorageContext> opt) : base(opt)
-        {
-
-        }
+        public GuitarManagerStorageContext(DbContextOptions<GuitarManagerStorageContext> opt) : base(opt) { }
 
         public DbSet<Instrument> Instruments { get; set; }
 
