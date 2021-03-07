@@ -10,21 +10,21 @@ namespace GuitarManager.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AccountsController : ControllerBase
+    public class GuitarManufacturersController : ControllerBase
     {
         private readonly IMediator mediator;
 
-        public AccountsController(IMediator mediator)
+        public GuitarManufacturersController(IMediator mediator)
         {
             this.mediator = mediator;
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllAccounts([FromQuery] GetAccountsRequest request)
+        public async Task<IActionResult> GetAllGuitarManufacturers([FromQuery] GetGuitarManufacturersRequest request)
         {
             var response = await this.mediator.Send(request);
-            return Ok(response);
+            return this.Ok(response);
         }
     }
 }
