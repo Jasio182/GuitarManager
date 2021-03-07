@@ -19,5 +19,9 @@ namespace GuitarManager.Controllers
         [HttpGet]
         [Route("")]
         public IEnumerable<Sound> GetAllSounds() => this.soundRepository.GetAll();
+
+        [HttpGet]
+        [Route("{soundId}")]
+        public Sound GetSoundsById(int soundId) => this.soundRepository.GetById(soundId);
     }
 }
