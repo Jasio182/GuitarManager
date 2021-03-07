@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MediatR;
 
 namespace GuitarManager.ApplicationServices.API.Domain
 {
-    class GetSoundsRequest
+    public class GetSoundsRequest : IRequest<GetSoundsResponse>
     {
+
     }
 }

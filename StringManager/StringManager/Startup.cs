@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using GuitarManager.DataAccess;
 using Microsoft.EntityFrameworkCore;
+using MediatR;
+using GuitarManager.ApplicationServices.API.Domain;
 
 namespace GuitarManager
 {
@@ -21,6 +23,7 @@ namespace GuitarManager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMediatR(typeof(ResponseBase<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddDbContext<GuitarManagerStorageContext>
                 (opt => opt.UseSqlServer(this.Configuration.GetConnectionString("GuitarManagerDatabaseConnection")));

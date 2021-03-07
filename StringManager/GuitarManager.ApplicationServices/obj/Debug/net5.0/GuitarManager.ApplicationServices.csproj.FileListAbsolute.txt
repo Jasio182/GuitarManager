@@ -1,0 +1,15 @@
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\bin\Debug\net5.0\GuitarManager.ApplicationServices.deps.json
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\bin\Debug\net5.0\GuitarManager.ApplicationServices.dll
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\bin\Debug\net5.0\ref\GuitarManager.ApplicationServices.dll
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\bin\Debug\net5.0\GuitarManager.ApplicationServices.pdb
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\obj\Debug\net5.0\GuitarManager.ApplicationServices.csprojAssemblyReference.cache
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\obj\Debug\net5.0\GuitarManager.ApplicationServices.GeneratedMSBuildEditorConfig.editorconfig
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\obj\Debug\net5.0\GuitarManager.ApplicationServices.AssemblyInfoInputs.cache
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\obj\Debug\net5.0\GuitarManager.ApplicationServices.AssemblyInfo.cs
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\obj\Debug\net5.0\GuitarManager.ApplicationServices.csproj.CoreCompileInputs.cache
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\obj\Debug\net5.0\GuitarManager.ApplicationServices.dll
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\obj\Debug\net5.0\ref\GuitarManager.ApplicationServices.dll
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\obj\Debug\net5.0\GuitarManager.ApplicationServices.pdb
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\bin\Debug\net5.0\GuitarManager.DataAccess.dll
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\bin\Debug\net5.0\GuitarManager.DataAccess.pdb
+D:\Repositories\StringManager\StringManager\GuitarManager.ApplicationServices\obj\Debug\net5.0\GuitarManager.ApplicationServices.csproj.CopyComplete

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GuitarManager.ApplicationServices.API.Domain.Models
+﻿namespace GuitarManager.ApplicationServices.API.Domain.Models
 {
-    class Sound
+    public class Sound
     {
+        public int Id { get; set; }
+
+        public string Pitch { get; set; }
+
+        public double Frequency { get; set; }
     }
 }

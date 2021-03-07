@@ -61,3 +61,7 @@ D:\Repositories\StringManager\StringManager\StringManager\obj\Debug\net5.0\Guita
 D:\Repositories\StringManager\StringManager\StringManager\obj\Debug\net5.0\ref\GuitarManager.dll
 D:\Repositories\StringManager\StringManager\StringManager\obj\Debug\net5.0\GuitarManager.pdb
 D:\Repositories\StringManager\StringManager\StringManager\obj\Debug\net5.0\GuitarManager.genruntimeconfig.cache
+D:\Repositories\StringManager\StringManager\StringManager\bin\Debug\net5.0\MediatR.dll
+D:\Repositories\StringManager\StringManager\StringManager\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+D:\Repositories\StringManager\StringManager\StringManager\bin\Debug\net5.0\GuitarManager.ApplicationServices.dll
+D:\Repositories\StringManager\StringManager\StringManager\bin\Debug\net5.0\GuitarManager.ApplicationServices.pdb

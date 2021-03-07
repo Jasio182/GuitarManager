@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "G75Bb95WcrfwRCda2Nq84hPlycQgzxwJC7Hb/djIt0mJmA21S80vzW5iTTkow+3oy0K4/fqTqn0/v10Jyd3sbA==",
+  "dgSpecHash": "ektcItG30zRRykatZk/X5WYo3eJMtVy1du8cCjpJYf3MlZPiYZdIIxWXz8unYa+vsIQIFDQa+MKQGzmz8lUHkg==",
   "success": true,
   "projectFilePath": "D:\\Repositories\\StringManager\\StringManager\\StringManager\\GuitarManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jasio\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Jasio\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\Jasio\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\Jasio\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
