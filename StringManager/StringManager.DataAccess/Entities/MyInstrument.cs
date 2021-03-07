@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GuitarManager.DataAccess.Entities
 {
-    class MyInstrument : EntityBase
+    public class MyInstrument : EntityBase
     {
         [Required]
         public int HoursWeekly { get; set; }

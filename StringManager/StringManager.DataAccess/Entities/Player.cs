@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GuitarManager.DataAccess.Entities
 {
-    class Player : EntityBase
+    public class Player : EntityBase
     {
         [Required]
         public string PlayStyle { get; set; }

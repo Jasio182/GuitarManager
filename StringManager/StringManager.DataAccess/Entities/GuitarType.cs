@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GuitarManager.DataAccess.Entities
 {
-    class GuitarType : EntityBase
+    public class GuitarType : EntityBase
     {
         [Required]
         [MaxLength(300)]
