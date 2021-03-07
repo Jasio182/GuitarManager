@@ -1,13 +1,12 @@
-﻿using System;
+﻿using GuitarManager.DataAccess.Entities;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-namespace GuitarManager.DataAccess.Entities
+namespace GuitarManager.ApplicationServices.API.Domain.Models
 {
-    public class GuitarType : EntityBase
+    public class GuitarType
     {
-        [Required]
-        [MaxLength(300)]
+        public int Id { get; set; }
+
         public string Type { get; set; }
 
         public List<Instrument> Instruments { get; set; }
