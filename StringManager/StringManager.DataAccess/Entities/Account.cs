@@ -7,7 +7,7 @@ namespace GuitarManager.DataAccess.Entities
     {
         [Required]
         [MaxLength(30)]
-        public string GuitarManufacturerName { get; set; }
+        public string Login { get; set; }
 
         [Required]
         [MaxLength(30)]
@@ -16,7 +16,7 @@ namespace GuitarManager.DataAccess.Entities
         [Required]
         public bool IsAdmin { get; set; }
 
-        [ForeignKey("Account")]
+        [ForeignKey("Player")]
         public Player PlayerID { get; set; }
     }
 }

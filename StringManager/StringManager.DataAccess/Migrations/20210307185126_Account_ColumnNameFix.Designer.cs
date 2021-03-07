@@ -4,14 +4,16 @@ using GuitarManager.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GuitarManager.DataAccess.Migrations
 {
     [DbContext(typeof(GuitarManagerStorageContext))]
-    partial class StringManagerStorageContextModelSnapshot : ModelSnapshot
+    [Migration("20210307185126_Account_ColumnNameFix")]
+    partial class Account_ColumnNameFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,6 +28,9 @@ namespace GuitarManager.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("Account")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("bit");
 
@@ -39,12 +44,11 @@ namespace GuitarManager.DataAccess.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int?>("Player")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("Player");
+                    b.HasIndex("Account")
+                        .IsUnique()
+                        .HasFilter("[Account] IS NOT NULL");
 
                     b.ToTable("Accounts");
                 });
@@ -187,9 +191,6 @@ namespace GuitarManager.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("Account")
-                        .HasColumnType("int");
-
                     b.Property<string>("CareStyle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -199,8 +200,6 @@ namespace GuitarManager.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Account");
 
                     b.ToTable("Players");
                 });
@@ -339,8 +338,8 @@ namespace GuitarManager.DataAccess.Migrations
             modelBuilder.Entity("GuitarManager.DataAccess.Entities.Account", b =>
                 {
                     b.HasOne("GuitarManager.DataAccess.Entities.Player", "PlayerID")
-                        .WithMany()
-                        .HasForeignKey("Player");
+                        .WithOne("AccountID")
+                        .HasForeignKey("GuitarManager.DataAccess.Entities.Account", "Account");
 
                     b.Navigation("PlayerID");
                 });
@@ -394,15 +393,6 @@ namespace GuitarManager.DataAccess.Migrations
                         .HasForeignKey("PlayerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("GuitarManager.DataAccess.Entities.Player", b =>
-                {
-                    b.HasOne("GuitarManager.DataAccess.Entities.Account", "AccountID")
-                        .WithMany()
-                        .HasForeignKey("Account");
-
-                    b.Navigation("AccountID");
                 });
 
             modelBuilder.Entity("GuitarManager.DataAccess.Entities.String", b =>
@@ -468,6 +458,8 @@ namespace GuitarManager.DataAccess.Migrations
 
             modelBuilder.Entity("GuitarManager.DataAccess.Entities.Player", b =>
                 {
+                    b.Navigation("AccountID");
+
                     b.Navigation("MyInstruments");
                 });
 
