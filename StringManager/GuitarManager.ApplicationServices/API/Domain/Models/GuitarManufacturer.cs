@@ -1,5 +1,4 @@
-﻿using GuitarManager.DataAccess.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace GuitarManager.ApplicationServices.API.Domain.Models
 {
@@ -8,7 +7,5 @@ namespace GuitarManager.ApplicationServices.API.Domain.Models
         public int Id { get; set; }
 
         public string GuitarManufacturerName { get; set; }
-
-        public List<Instrument> Instruments { get; set; }
     }
 }

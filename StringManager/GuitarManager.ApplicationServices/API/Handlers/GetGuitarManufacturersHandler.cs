@@ -20,15 +20,14 @@ namespace GuitarManager.ApplicationServices.API.Handlers
         public Task<GetGuitarManufacturersResponse> Handle(GetGuitarManufacturersRequest request, CancellationToken cancellationToken)
         {
             var guitarManufacturers = this.guitarManufacturerRepository.GetAll();
-            var domainGuitarManufacturers = guitarManufacturers.Select(x => new Domain.Models.GuitarManufacturer()
+            var domainguitarManufacturers = guitarManufacturers.Select(x => new Domain.Models.GuitarManufacturer()
             {
                 Id = x.Id,
-                GuitarManufacturerName = x.GuitarManufacturerName,
-                Instruments = x.Instruments
+                GuitarManufacturerName = x.GuitarManufacturerName
             });
             var response = new GetGuitarManufacturersResponse()
             {
-                Data = domainGuitarManufacturers.ToList()
+                Data = domainguitarManufacturers.ToList()
             };
             return Task.FromResult(response);
         }

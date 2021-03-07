@@ -23,9 +23,7 @@ namespace GuitarManager.ApplicationServices.API.Handlers
             var domainGuitarTypes = guitarTypes.Select(x => new Domain.Models.GuitarType()
             {
                 Id = x.Id,
-                Type = x.Type,
-                Instruments = x.Instruments,
-                StringSets = x.StringSets
+                Type = x.Type
             });
             var response = new GetGuitarTypesResponse()
             {
