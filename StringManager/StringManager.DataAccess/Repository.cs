@@ -9,7 +9,7 @@ namespace GuitarManager.DataAccess
     public class Repository<T> : IRepository<T> where T : EntityBase
     {
         protected readonly GuitarManagerStorageContext context;
-        private DbSet<T> entities;
+        protected readonly DbSet<T> entities;
 
         public Repository(GuitarManagerStorageContext context)
         {
