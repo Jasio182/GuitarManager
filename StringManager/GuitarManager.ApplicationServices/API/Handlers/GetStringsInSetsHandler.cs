@@ -1,7 +1,9 @@
-﻿using GuitarManager.ApplicationServices.API.Domain;
+﻿using AutoMapper;
+using GuitarManager.ApplicationServices.API.Domain;
 using GuitarManager.DataAccess;
 using GuitarManager.DataAccess.Entities;
 using MediatR;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,23 +13,20 @@ namespace GuitarManager.ApplicationServices.API.Handlers
     class GetStringsInSetsHandler : IRequestHandler<GetStringsInSetsRequest, GetStringsInSetsResponse>
     {
         private readonly IRepository<StringInSet> stringsInSetsRepository;
+        private readonly IMapper mapper;
 
-        public GetStringsInSetsHandler(IRepository<StringInSet> stringsInSetsRepository)
+        public GetStringsInSetsHandler(IRepository<StringInSet> stringsInSetsRepository, IMapper mapper)
         {
             this.stringsInSetsRepository = stringsInSetsRepository;
+            this.mapper = mapper;
         }
         public Task<GetStringsInSetsResponse> Handle(GetStringsInSetsRequest request, CancellationToken cancellationToken)
         {
-            var stringInSets = stringsInSetsRepository.GetAll();
-            var domiainStringsInSets = stringInSets.Select(x => new Domain.Models.StringInSet()
-            {
-                StringPosition = x.StringPosition,
-                StringID = x.StringID,
-                StringSetID = x.StringSetID
-            });
+            var stringInSets = this.stringsInSetsRepository.GetAll();
+            var mappedStringsInSets = this.mapper.Map<List<Domain.Models.StringInSet>>(stringInSets);
             var response = new GetStringsInSetsResponse()
             {
-                Data = domiainStringsInSets.ToList()
+                Data = mappedStringsInSets
             };
             return Task.FromResult(response);
         }

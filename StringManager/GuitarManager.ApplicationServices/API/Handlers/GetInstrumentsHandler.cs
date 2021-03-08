@@ -1,8 +1,9 @@
-﻿using GuitarManager.ApplicationServices.API.Domain;
+﻿using AutoMapper;
+using GuitarManager.ApplicationServices.API.Domain;
 using GuitarManager.DataAccess;
 using GuitarManager.DataAccess.Entities;
 using MediatR;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,29 +12,22 @@ namespace GuitarManager.ApplicationServices.API.Handlers
     public class GetInstrumentsHandler : IRequestHandler<GetInstrumentsRequest, GetInstrumentsResponse>
     {
         private readonly IRepository<Instrument> instrumentsRepository;
+        private readonly IMapper mapper;
 
-        public GetInstrumentsHandler(IRepository<Instrument> instrumentsRepository)
+        public GetInstrumentsHandler(IRepository<Instrument> instrumentsRepository, IMapper mapper)
         {
             this.instrumentsRepository = instrumentsRepository;
+            this.mapper = mapper;
         }
 
 
         public Task<GetInstrumentsResponse> Handle(GetInstrumentsRequest request, CancellationToken cancellationToken)
         {
             var instruments = this.instrumentsRepository.GetAll();
-            var domainInstruments = instruments.Select(x => new Domain.Models.Instrument()
-            {
-                Id = x.Id,
-                Model = x.Model,
-                NumberOfStrings = x.NumberOfStrings,
-                ScaleLenghtBass = x.ScaleLenghtBass,
-                ScaleLenghtTreble = x.ScaleLenghtTreble,
-                GuitarManufacturerID = x.GuitarManufacturerID,
-                GuitarTypeID = x.GuitarTypeID
-            });
+            var mappedInstruments = this.mapper.Map<List<Domain.Models.Instrument>>(instruments);
             var response = new GetInstrumentsResponse()
             {
-                Data = domainInstruments.ToList()
+                Data = mappedInstruments
             };
             return Task.FromResult(response);
         }

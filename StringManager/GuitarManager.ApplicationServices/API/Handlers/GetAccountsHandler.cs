@@ -1,7 +1,9 @@
-﻿using GuitarManager.ApplicationServices.API.Domain;
+﻿using AutoMapper;
+using GuitarManager.ApplicationServices.API.Domain;
 using GuitarManager.DataAccess;
 using GuitarManager.DataAccess.Entities;
 using MediatR;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,24 +13,21 @@ namespace GuitarManager.ApplicationServices.API.Handlers
     public class GetAccountsHandler : IRequestHandler<GetAccountsRequest, GetAccountsResponse>
     {
         private readonly IRepository<Account> accountRepository;
+        private readonly IMapper mapper;
 
-        public GetAccountsHandler(IRepository<Account> accountRepository)
+        public GetAccountsHandler(IRepository<Account> accountRepository, IMapper mapper)
         {
             this.accountRepository = accountRepository;
+            this.mapper = mapper;
         }
 
         public Task<GetAccountsResponse> Handle(GetAccountsRequest request, CancellationToken cancellationToken)
         {
             var accounts = this.accountRepository.GetAll();
-            var domainAccounts = accounts.Select(x => new Domain.Models.Account()
-            {
-                Id = x.Id,
-                Login = x.Login,
-                IsAdmin = x.IsAdmin
-            });
+            var mappedAccounts = this.mapper.Map<List<Domain.Models.Account>>(accounts);
             var response = new GetAccountsResponse()
             {
-                Data = domainAccounts.ToList()
+                Data = mappedAccounts
             };
             return Task.FromResult(response);
         }

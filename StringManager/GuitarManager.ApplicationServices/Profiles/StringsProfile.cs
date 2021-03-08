@@ -1,0 +1,15 @@
+﻿using AutoMapper;
+using GuitarManager.ApplicationServices.API.Domain.Models;
+
+namespace GuitarManager.ApplicationServices.Profiles
+{
+    class StringsProfile :Profile
+    {
+        public StringsProfile() => this.CreateMap<DataAccess.Entities.String, String>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+            .ForMember(x => x.Size, y => y.MapFrom(z => z.Size))
+            .ForMember(x => x.BulkDensity, y => y.MapFrom(z => z.BulkDensity))
+            .ForMember(x => x.StringManufacturerID, y => y.MapFrom(z => z.StringManufacturerID))
+            .ForMember(x => x.StringTypeID, y => y.MapFrom(z => z.StringTypeID));
+    }
+}

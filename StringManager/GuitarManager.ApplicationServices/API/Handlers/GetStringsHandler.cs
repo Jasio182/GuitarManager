@@ -1,7 +1,9 @@
-﻿using GuitarManager.ApplicationServices.API.Domain;
+﻿using AutoMapper;
+using GuitarManager.ApplicationServices.API.Domain;
 using GuitarManager.DataAccess;
 using GuitarManager.DataAccess.Entities;
 using MediatR;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,26 +13,21 @@ namespace GuitarManager.ApplicationServices.API.Handlers
     public class GetStringsHandler : IRequestHandler<GetStringsRequest, GetStringsResponse>
     {
         private readonly IRepository<String> stringsRepository;
+        private readonly IMapper mapper;
 
-        public GetStringsHandler(IRepository<String> stringsRepository)
+        public GetStringsHandler(IRepository<String> stringsRepository, IMapper mapper)
         {
             this.stringsRepository = stringsRepository;
+            this.mapper = mapper;
         }
 
         public Task<GetStringsResponse> Handle(GetStringsRequest request, CancellationToken cancellationToken)
         {
-            var strings = stringsRepository.GetAll();
-            var domainStrings = strings.Select(x => new Domain.Models.String()
-            {
-                Id = x.Id,
-                Size = x.Size,
-                BulkDensity = x.BulkDensity,
-                StringTypeID = x.StringTypeID,
-                StringManufacturerID = x.StringManufacturerID
-            });
+            var strings = this.stringsRepository.GetAll();
+            var mappedString = this.mapper.Map<List<Domain.Models.String>>(strings);
             var response = new GetStringsResponse()
             {
-                Data = domainStrings.ToList()
+                Data = mappedString
             };
             return Task.FromResult(response);
         }
