@@ -14,7 +14,7 @@ namespace GuitarManager.Controllers
         private readonly IRepository<Sound> soundRepository;
         private readonly IMediator mediator;
 
-        public SoundsController(IRepository<Sound> soundRepository, IMediator mediator)
+       public SoundsController(IRepository<Sound> soundRepository, IMediator mediator)
         {
             this.soundRepository = soundRepository;
             this.mediator = mediator;
@@ -28,8 +28,8 @@ namespace GuitarManager.Controllers
             return this.Ok(response);
         }
 
-        [HttpGet]
-        [Route("{soundId}")]
-        public Sound GetSoundsById(int soundId) => this.soundRepository.GetById(soundId);
+        //[HttpGet]
+        //[Route("{soundId}")]
+        //public Sound GetSoundsById(int soundId) => this.soundRepository.GetById(soundId);
     }
 }

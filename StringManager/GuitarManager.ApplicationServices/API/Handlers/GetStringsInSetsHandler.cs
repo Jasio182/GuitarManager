@@ -20,15 +20,15 @@ namespace GuitarManager.ApplicationServices.API.Handlers
             this.stringsInSetsRepository = stringsInSetsRepository;
             this.mapper = mapper;
         }
-        public Task<GetStringsInSetsResponse> Handle(GetStringsInSetsRequest request, CancellationToken cancellationToken)
+        public async Task<GetStringsInSetsResponse> Handle(GetStringsInSetsRequest request, CancellationToken cancellationToken)
         {
-            var stringInSets = this.stringsInSetsRepository.GetAll();
+            var stringInSets = await this.stringsInSetsRepository.GetAll();
             var mappedStringsInSets = this.mapper.Map<List<Domain.Models.StringInSet>>(stringInSets);
             var response = new GetStringsInSetsResponse()
             {
                 Data = mappedStringsInSets
             };
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

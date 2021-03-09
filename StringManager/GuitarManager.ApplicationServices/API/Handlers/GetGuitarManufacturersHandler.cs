@@ -21,15 +21,15 @@ namespace GuitarManager.ApplicationServices.API.Handlers
             this.mapper = mapper;
         }
 
-        public Task<GetGuitarManufacturersResponse> Handle(GetGuitarManufacturersRequest request, CancellationToken cancellationToken)
+        public async Task<GetGuitarManufacturersResponse> Handle(GetGuitarManufacturersRequest request, CancellationToken cancellationToken)
         {
-            var guitarManufacturers = this.guitarManufacturerRepository.GetAll();
+            var guitarManufacturers = await this.guitarManufacturerRepository.GetAll();
             var mappedGuitarManufacturers = this.mapper.Map<List<Domain.Models.GuitarManufacturer>>(guitarManufacturers);
             var response = new GetGuitarManufacturersResponse()
             {
                 Data = mappedGuitarManufacturers
             };
-            return Task.FromResult(response);
+            return response;
         }
     }
 }

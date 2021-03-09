@@ -21,15 +21,15 @@ namespace GuitarManager.ApplicationServices.API.Handlers
             this.mapper = mapper;
         }
 
-        public Task<GetStringTypesResponse> Handle(GetStringTypesRequest request, CancellationToken cancellationToken)
+        public async Task<GetStringTypesResponse> Handle(GetStringTypesRequest request, CancellationToken cancellationToken)
         {
-            var stringTypes = this.stringTypesRepository.GetAll();
+            var stringTypes = await this.stringTypesRepository.GetAll();
             var mappedStringTypes = this.mapper.Map<List<Domain.Models.StringType>>(stringTypes);
             var response = new GetStringTypesResponse()
             {
                 Data = mappedStringTypes
             };
-            return Task.FromResult(response);
+            return response;
         }
     }
 }
