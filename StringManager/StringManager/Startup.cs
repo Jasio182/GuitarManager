@@ -33,8 +33,6 @@ namespace GuitarManager
 
             services.AddMediatR(typeof(ResponseBase<>));
 
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
             services.AddDbContext<GuitarManagerStorageContext>
                 (opt => opt.UseSqlServer(this.Configuration.GetConnectionString("GuitarManagerDatabaseConnection")));
 

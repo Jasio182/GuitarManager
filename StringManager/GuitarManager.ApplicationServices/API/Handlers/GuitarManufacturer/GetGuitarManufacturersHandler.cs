@@ -1,30 +1,32 @@
 ﻿using AutoMapper;
 using GuitarManager.ApplicationServices.API.Domain.GuitarManufacturer;
 using GuitarManager.DataAccess;
+using GuitarManager.DataAccess.CQRS;
+using GuitarManager.DataAccess.CQRS.Queries.GuitarManufacturer;
 using GuitarManager.DataAccess.Entities;
 using MediatR;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GuitarManager.ApplicationServices.API.Handlers
+namespace GuitarManager.ApplicationServices.API.Handlers.GuitarManufacturer
 {
     public class GetGuitarManufacturersHandler : IRequestHandler<GetGuitarManufacturersRequest, GetGuitarManufacturersResponse>
     {
-        private readonly IRepository<GuitarManufacturer> guitarManufacturerRepository;
+        private readonly IQueryExecutor queryExecutor;
         private readonly IMapper mapper;
 
-        public GetGuitarManufacturersHandler(IRepository<GuitarManufacturer> guitarManufacturerRepository, IMapper mapper)
+        public GetGuitarManufacturersHandler(IQueryExecutor queryExecutor, IMapper mapper)
         {
-            this.guitarManufacturerRepository = guitarManufacturerRepository;
+            this.queryExecutor = queryExecutor;
             this.mapper = mapper;
         }
 
         public async Task<GetGuitarManufacturersResponse> Handle(GetGuitarManufacturersRequest request, CancellationToken cancellationToken)
         {
-            var guitarManufacturers = await this.guitarManufacturerRepository.GetAll();
-            var mappedGuitarManufacturers = this.mapper.Map<List<Domain.Models.GuitarManufacturer>>(guitarManufacturers);
+            var query = new GetGuitarManufacturersQuery();
+            var guitarManufacturers = await queryExecutor.Execute(query);
+            var mappedGuitarManufacturers = mapper.Map<List<Domain.Models.GuitarManufacturer>>(guitarManufacturers);
             var response = new GetGuitarManufacturersResponse()
             {
                 Data = mappedGuitarManufacturers

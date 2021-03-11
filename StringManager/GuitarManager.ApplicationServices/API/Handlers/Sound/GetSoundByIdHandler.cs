@@ -22,7 +22,7 @@ namespace GuitarManager.ApplicationServices.API.Handlers
         {
             var query = new GetSoundByIdQuery()
             {
-                Id = request.soundId
+                Id = request.SoundId
             };
             var sound = await this.queryExecutor.Execute(query);
             var mappedSound = this.mapper.Map<Domain.Models.Sound>(sound);

@@ -19,6 +19,8 @@ namespace GuitarManager.DataAccess
 
         public DbSet<Sound> Sounds { get; set; }
 
+        public DbSet<String> Strings { get; set; }
+
         public DbSet<StringInSet> StringsInSets { get; set; }
 
         public DbSet<StringManufacturer> StringManufacturers { get; set; }

@@ -27,7 +27,7 @@ namespace GuitarManager.Controllers
         }
 
         [HttpGet]
-        [Route("{soundId}")]
+        [Route("{SoundId}")]
         public async Task<IActionResult> GetSoundsById([FromRoute] GetSoundByIdRequest request)
         {
             var response = await this.mediator.Send(request);

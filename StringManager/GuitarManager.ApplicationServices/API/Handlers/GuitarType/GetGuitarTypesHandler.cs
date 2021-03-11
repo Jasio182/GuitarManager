@@ -1,30 +1,32 @@
 ﻿using AutoMapper;
 using GuitarManager.ApplicationServices.API.Domain.GuitarType;
 using GuitarManager.DataAccess;
+using GuitarManager.DataAccess.CQRS;
+using GuitarManager.DataAccess.CQRS.Queries.GuitarType;
 using GuitarManager.DataAccess.Entities;
 using MediatR;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GuitarManager.ApplicationServices.API.Handlers
+namespace GuitarManager.ApplicationServices.API.Handlers.GuitarType
 {
     public class GetGuitarTypesHandler : IRequestHandler<GetGuitarTypesRequest, GetGuitarTypesResponse>
     {
-        private readonly IRepository<GuitarType> guitarTypeRepository;
+        private readonly IQueryExecutor queryExecutor;
         private readonly IMapper mapper;
 
-        public GetGuitarTypesHandler(IRepository<GuitarType> guitarTypeRepository, IMapper mapper)
+        public GetGuitarTypesHandler(IQueryExecutor queryExecutor, IMapper mapper)
         {
-            this.guitarTypeRepository = guitarTypeRepository;
+            this.queryExecutor = queryExecutor;
             this.mapper = mapper;
         }
 
         public async Task<GetGuitarTypesResponse> Handle(GetGuitarTypesRequest request, CancellationToken cancellationToken)
         {
-            var guitarTypes = await this.guitarTypeRepository.GetAll();
-            var domainGuitarTypes = this.mapper.Map<List<Domain.Models.GuitarType>>(guitarTypes);
+            var query = new GetGuitarTypesQuery();
+            var guitarTypes = await queryExecutor.Execute(query);
+            var domainGuitarTypes = mapper.Map<List<Domain.Models.GuitarType>>(guitarTypes);
             var response = new GetGuitarTypesResponse()
             {
                 Data = domainGuitarTypes

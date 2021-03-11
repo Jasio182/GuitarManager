@@ -1,30 +1,31 @@
 ﻿using AutoMapper;
 using GuitarManager.ApplicationServices.API.Domain;
 using GuitarManager.DataAccess;
-using GuitarManager.DataAccess.Entities;
+using GuitarManager.DataAccess.CQRS;
+using GuitarManager.DataAccess.CQRS.Queries.StringType;
 using MediatR;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GuitarManager.ApplicationServices.API.Handlers
+namespace GuitarManager.ApplicationServices.API.Handlers.StringType
 {
     public class GetStringTypesHandler : IRequestHandler<GetStringTypesRequest, GetStringTypesResponse>
     {
-        private readonly IRepository<StringType> stringTypesRepository;
+        private readonly IQueryExecutor queryExecutor;
         private readonly IMapper mapper;
 
-        public GetStringTypesHandler(IRepository<StringType> stringTypesRepository, IMapper mapper)
+        public GetStringTypesHandler(IQueryExecutor queryExecutor, IMapper mapper)
         {
-            this.stringTypesRepository = stringTypesRepository;
+            this.queryExecutor = queryExecutor;
             this.mapper = mapper;
         }
 
         public async Task<GetStringTypesResponse> Handle(GetStringTypesRequest request, CancellationToken cancellationToken)
         {
-            var stringTypes = await this.stringTypesRepository.GetAll();
-            var mappedStringTypes = this.mapper.Map<List<Domain.Models.StringType>>(stringTypes);
+            var query = new GetStringTypesQuery();
+            var stringTypes = await this.queryExecutor.Execute(query);
+            var mappedStringTypes = mapper.Map<List<Domain.Models.StringType>>(stringTypes);
             var response = new GetStringTypesResponse()
             {
                 Data = mappedStringTypes

@@ -1,29 +1,30 @@
 ﻿using AutoMapper;
 using GuitarManager.ApplicationServices.API.Domain.StringInSet;
 using GuitarManager.DataAccess;
-using GuitarManager.DataAccess.Entities;
+using GuitarManager.DataAccess.CQRS;
+using GuitarManager.DataAccess.CQRS.Queries.StringInSet;
 using MediatR;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GuitarManager.ApplicationServices.API.Handlers
+namespace GuitarManager.ApplicationServices.API.Handlers.StringInSet
 {
     class GetStringsInSetsHandler : IRequestHandler<GetStringsInSetsRequest, GetStringsInSetsResponse>
     {
-        private readonly IRepository<StringInSet> stringsInSetsRepository;
+        private readonly IQueryExecutor queryExecutor;
         private readonly IMapper mapper;
 
-        public GetStringsInSetsHandler(IRepository<StringInSet> stringsInSetsRepository, IMapper mapper)
+        public GetStringsInSetsHandler(IQueryExecutor queryExecutor, IMapper mapper)
         {
-            this.stringsInSetsRepository = stringsInSetsRepository;
+            this.queryExecutor = queryExecutor;
             this.mapper = mapper;
         }
         public async Task<GetStringsInSetsResponse> Handle(GetStringsInSetsRequest request, CancellationToken cancellationToken)
         {
-            var stringInSets = await this.stringsInSetsRepository.GetAll();
-            var mappedStringsInSets = this.mapper.Map<List<Domain.Models.StringInSet>>(stringInSets);
+            var query = new GetStringsInSetsQuery();
+            var stringInSets = await queryExecutor.Execute(query);
+            var mappedStringsInSets = mapper.Map<List<Domain.Models.StringInSet>>(stringInSets);
             var response = new GetStringsInSetsResponse()
             {
                 Data = mappedStringsInSets
