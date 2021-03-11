@@ -1,4 +1,4 @@
-﻿using GuitarManager.ApplicationServices.API.Domain;
+﻿using GuitarManager.ApplicationServices.API.Domain.Sound;
 using GuitarManager.DataAccess;
 using GuitarManager.DataAccess.Entities;
 using MediatR;
@@ -11,12 +11,10 @@ namespace GuitarManager.Controllers
     [Route("[controller]")]
     public class SoundsController : ControllerBase
     {
-        private readonly IRepository<Sound> soundRepository;
         private readonly IMediator mediator;
 
-       public SoundsController(IRepository<Sound> soundRepository, IMediator mediator)
+       public SoundsController(IMediator mediator)
         {
-            this.soundRepository = soundRepository;
             this.mediator = mediator;
         }
 
@@ -28,8 +26,13 @@ namespace GuitarManager.Controllers
             return this.Ok(response);
         }
 
-        //[HttpGet]
-        //[Route("{soundId}")]
-        //public Sound GetSoundsById(int soundId) => this.soundRepository.GetById(soundId);
+        [HttpGet]
+        [Route("{soundId}")]
+        public async Task<IActionResult> GetSoundsById([FromQuery] GetSoundRequest request, int soundId)
+        {
+            request.soundId = soundId;
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }
