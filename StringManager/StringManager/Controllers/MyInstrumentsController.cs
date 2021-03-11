@@ -19,7 +19,15 @@ namespace GuitarManager.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllSounds([FromQuery] GetMyInstrumentsRequest request)
+        public async Task<IActionResult> GetAllMyInstruments([FromQuery] GetMyInstrumentsRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
+        [HttpPost]
+        [Route("")]
+        public async Task<IActionResult> AddMyInstrument([FromBody] AddMyInstrumentRequest request)
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);

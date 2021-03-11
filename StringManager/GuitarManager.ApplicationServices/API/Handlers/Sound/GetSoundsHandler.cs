@@ -1,15 +1,13 @@
 ﻿using AutoMapper;
 using GuitarManager.ApplicationServices.API.Domain.Sound;
 using GuitarManager.DataAccess.CQRS;
-using GuitarManager.DataAccess.CQRS.Queries;
-
+using GuitarManager.DataAccess.CQRS.Queries.Sound;
 using MediatR;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GuitarManager.ApplicationServices.API.Handlers
+namespace GuitarManager.ApplicationServices.API.Handlers.Sound
 {
     public class GetSoundsHandler : IRequestHandler<GetSoundsRequest, GetSoundsResponse>
     {
@@ -25,8 +23,8 @@ namespace GuitarManager.ApplicationServices.API.Handlers
         public async Task<GetSoundsResponse> Handle(GetSoundsRequest request, CancellationToken cancellationToken)
         {
             var query = new GetSoundsQuery();
-            var sounds = await this.queryExecutor.Execute(query);
-            var mappedSounds = this.mapper.Map<List<Domain.Models.Sound>>(sounds);
+            var sounds = await queryExecutor.Execute(query);
+            var mappedSounds = mapper.Map<List<Domain.Models.Sound>>(sounds);
             var response = new GetSoundsResponse()
             {
                 Data = mappedSounds

@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using GuitarManager.ApplicationServices.API.Domain.MyInstrument;
 using GuitarManager.DataAccess;
-using GuitarManager.DataAccess.Entities;
 using MediatR;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,10 +10,10 @@ namespace GuitarManager.ApplicationServices.API.Handlers
 {
     public class GetMyInstrumentsHandler : IRequestHandler<GetMyInstrumentsRequest, GetMyInstrumentsResponse>
     {
-        private readonly IRepository<MyInstrument> myInstrumentsRepository;
+        private readonly IRepository<DataAccess.Entities.MyInstrument> myInstrumentsRepository;
         private readonly IMapper mapper;
 
-        public GetMyInstrumentsHandler(IRepository<MyInstrument> myInstrumentsRepository, IMapper mapper)
+        public GetMyInstrumentsHandler(IRepository<DataAccess.Entities.MyInstrument> myInstrumentsRepository, IMapper mapper)
         {
             this.myInstrumentsRepository = myInstrumentsRepository;
             this.mapper = mapper;

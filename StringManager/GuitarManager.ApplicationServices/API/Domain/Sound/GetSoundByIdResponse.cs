@@ -1,6 +1,6 @@
 ﻿namespace GuitarManager.ApplicationServices.API.Domain.Sound
 {
-    public class GetSoundResponse : ResponseBase<Models.Sound>
+    public class GetSoundByIdResponse : ResponseBase<Models.Sound>
     {
     }
 }

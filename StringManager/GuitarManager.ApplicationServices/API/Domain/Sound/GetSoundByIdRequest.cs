@@ -2,7 +2,7 @@
 
 namespace GuitarManager.ApplicationServices.API.Domain.Sound
 {
-    public class GetSoundRequest : IRequest<GetSoundResponse>
+    public class GetSoundByIdRequest : IRequest<GetSoundByIdResponse>
     {
         public int soundId { get; set; }
     }

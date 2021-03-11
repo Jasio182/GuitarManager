@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 namespace GuitarManager.DataAccess.CQRS.Commands
 {
-    class AddSoundCommand : CommandBase<Sound, Sound>
+    public class AddMyInstrumentCommand : CommandBase<MyInstrument, MyInstrument>
     {
-        public override async Task<Sound> Execute(GuitarManagerStorageContext context)
+        public override async Task<MyInstrument> Execute(GuitarManagerStorageContext context)
         {
             await context.AddAsync(this.Parameter);
             await context.SaveChangesAsync();
