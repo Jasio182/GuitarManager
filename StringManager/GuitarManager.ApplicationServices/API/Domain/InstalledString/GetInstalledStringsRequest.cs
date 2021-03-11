@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GuitarManager.ApplicationServices.API.Domain
+namespace GuitarManager.ApplicationServices.API.Domain.InstalledString
 {
     public class GetInstalledStringsRequest : IRequest<GetInstalledStringsResponse>
     {

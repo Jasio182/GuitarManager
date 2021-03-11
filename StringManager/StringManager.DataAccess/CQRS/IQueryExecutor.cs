@@ -1,7 +1,7 @@
 ﻿using GuitarManager.DataAccess.CQRS.Queries;
 using System.Threading.Tasks;
 
-namespace GuitarManager.DataAccess
+namespace GuitarManager.DataAccess.CQRS
 {
     public interface IQueryExecutor
     {

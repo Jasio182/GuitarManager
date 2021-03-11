@@ -1,9 +1,8 @@
-﻿using GuitarManager.ApplicationServices.API.Domain.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace GuitarManager.ApplicationServices.API.Domain
+namespace GuitarManager.ApplicationServices.API.Domain.Instrument
 {
-    public class GetInstrumentsResponse : ResponseBase<List<Instrument>>
+    public class GetInstrumentsResponse : ResponseBase<List<Models.Instrument>>
     {
     }
 }

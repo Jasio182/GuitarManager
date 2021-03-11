@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GuitarManager.ApplicationServices.API.Domain.Sound;
-using GuitarManager.DataAccess;
+using GuitarManager.DataAccess.CQRS;
 using GuitarManager.DataAccess.CQRS.Queries;
 
 using MediatR;

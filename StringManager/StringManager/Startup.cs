@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using MediatR;
 using GuitarManager.ApplicationServices.API.Domain;
 using GuitarManager.ApplicationServices.Profiles;
+using GuitarManager.DataAccess.CQRS;
 
 namespace GuitarManager
 {

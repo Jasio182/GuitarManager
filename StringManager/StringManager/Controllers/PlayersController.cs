@@ -1,4 +1,4 @@
-﻿using GuitarManager.ApplicationServices.API.Domain;
+﻿using GuitarManager.ApplicationServices.API.Domain.Player;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;

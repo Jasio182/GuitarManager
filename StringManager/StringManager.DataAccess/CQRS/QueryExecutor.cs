@@ -1,7 +1,7 @@
 ﻿using GuitarManager.DataAccess.CQRS.Queries;
 using System.Threading.Tasks;
 
-namespace GuitarManager.DataAccess
+namespace GuitarManager.DataAccess.CQRS
 {
     public class QueryExecutor : IQueryExecutor
     {
@@ -12,6 +12,6 @@ namespace GuitarManager.DataAccess
             this.context = context;
         }
 
-        public Task<TResult> Execute<TResult>(QueryBase<TResult> query) => query.Execute(this.context);
+        public Task<TResult> Execute<TResult>(QueryBase<TResult> query) => query.Execute(context);
     }
 }

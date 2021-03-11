@@ -1,9 +1,8 @@
-﻿using GuitarManager.ApplicationServices.API.Domain.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace GuitarManager.ApplicationServices.API.Domain
+namespace GuitarManager.ApplicationServices.API.Domain.StringManufacturer
 {
-    public class GetStringManufacturersResponse : ResponseBase<List<StringManufacturer>>
+    public class GetStringManufacturersResponse : ResponseBase<List<Models.StringManufacturer>>
     {
     }
 }

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using GuitarManager.ApplicationServices.API.Domain;
+using GuitarManager.ApplicationServices.API.Domain.String;
 using GuitarManager.DataAccess;
 using GuitarManager.DataAccess.Entities;
 using MediatR;
