@@ -25,7 +25,11 @@ namespace GuitarManager.ApplicationServices.API.Handlers.String
 
         public async Task<GetStringsResponse> Handle(GetStringsRequest request, CancellationToken cancellationToken)
         {
-            var query = new GetStringsQuery();
+            var query = new GetStringsQuery() 
+            { 
+                StringManufacturerID = request.StringManufacturerID,
+                StringTypeID = request.StringTypeID
+            };
             var strings = await this.queryExecutor.Execute(query);
             var mappedString = mapper.Map<List<Domain.Models.String>>(strings);
             var response = new GetStringsResponse()
