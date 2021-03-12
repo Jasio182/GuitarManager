@@ -4,14 +4,16 @@ using GuitarManager.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GuitarManager.DataAccess.Migrations
 {
     [DbContext(typeof(GuitarManagerStorageContext))]
-    partial class StringManagerStorageContextModelSnapshot : ModelSnapshot
+    [Migration("20210312000151_String_Fix")]
+    partial class String_Fix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
