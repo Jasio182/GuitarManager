@@ -23,7 +23,10 @@ namespace GuitarManager.ApplicationServices.API.Handlers
 
         public async Task<GetMyInstrumentsResponse> Handle(GetMyInstrumentsRequest request, CancellationToken cancellationToken)
         {
-            var query = new GetMyInstrumentsQuery();
+            var query = new GetMyInstrumentsQuery()
+            {
+                PlayerID = request.PlayerID
+            };
             var myInstruments = await this.queryExecutor.Execute(query);
             var mappedMyInstruments = this.mapper.Map<List<Domain.Models.MyInstrument>>(myInstruments);
             var response = new GetMyInstrumentsResponse()

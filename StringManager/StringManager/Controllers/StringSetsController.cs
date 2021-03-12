@@ -23,5 +23,13 @@ namespace GuitarManager.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
+        [HttpGet]
+        [Route("{StringSetId}")]
+        public async Task<IActionResult> GetStringSetById([FromRoute] GetStringSetByIdRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }
