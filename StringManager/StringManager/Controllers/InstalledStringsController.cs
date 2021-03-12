@@ -26,5 +26,21 @@ namespace GuitarManager.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
+        [HttpGet]
+        [Route("{StringPosition}/{MyInstrumentID}")]
+        public async Task<IActionResult> GetInstalledStringByPositionAndMyInstrument([FromRoute] GetInstalledStringByPositionAndMyInstrumentRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
+        [HttpPost]
+        [Route("")]
+        public async Task<IActionResult> AddInstalledString([FromBody] AddInstalledStringRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
     }
 }

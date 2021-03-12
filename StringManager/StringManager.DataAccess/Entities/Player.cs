@@ -12,9 +12,6 @@ namespace GuitarManager.DataAccess.Entities
         [Required]
         public string CareStyle { get; set; }
 
-        [ForeignKey("Account")]
-        public Account AccountID { get; set; }
-
         public List<MyInstrument> MyInstruments { get; set; }
     }
 }

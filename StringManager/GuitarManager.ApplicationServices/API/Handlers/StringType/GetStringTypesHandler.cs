@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GuitarManager.ApplicationServices.API.Domain;
+using GuitarManager.ApplicationServices.API.Domain.StringType;
 using GuitarManager.DataAccess;
 using GuitarManager.DataAccess.CQRS;
 using GuitarManager.DataAccess.CQRS.Queries.StringType;

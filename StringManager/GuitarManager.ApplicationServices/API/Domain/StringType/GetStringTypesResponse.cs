@@ -1,9 +1,8 @@
-﻿using GuitarManager.ApplicationServices.API.Domain.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace GuitarManager.ApplicationServices.API.Domain
 {
-    public class GetStringTypesResponse : ResponseBase<List<StringType>>
+    public class GetStringTypesResponse : ResponseBase<List<Models.StringType>>
     {
     }
 }

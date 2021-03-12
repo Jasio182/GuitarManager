@@ -17,7 +17,7 @@ namespace GuitarManager.DataAccess.CQRS.Queries.String
             else if (StringTypeID > 0 && StringManufacturerID <= 0)
                 return context.Strings.Where(x => x.StringTypeID == this.StringTypeID).ToListAsync();
             else if (StringTypeID > 0 && StringManufacturerID > 0)
-                return context.Strings.Where(x => x.StringManufacturerID == this.StringManufacturerID).Where(x => x.StringTypeID == this.StringTypeID).ToListAsync();
+                return context.Strings.Where(x => x.StringManufacturerID == this.StringManufacturerID && x.StringTypeID == this.StringTypeID).ToListAsync();
             else
                 return context.Strings.ToListAsync();
         }

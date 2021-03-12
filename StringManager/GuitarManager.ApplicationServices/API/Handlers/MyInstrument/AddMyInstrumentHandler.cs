@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GuitarManager.ApplicationServices.API.Domain.MyInstrument;
 using GuitarManager.DataAccess.CQRS;
-using GuitarManager.DataAccess.CQRS.Commands;
+using GuitarManager.DataAccess.CQRS.Commands.MyInstrument;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

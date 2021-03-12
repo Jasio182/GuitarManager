@@ -1,4 +1,4 @@
-﻿using GuitarManager.ApplicationServices.API.Domain;
+﻿using GuitarManager.ApplicationServices.API.Domain.StringType;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -21,7 +21,15 @@ namespace GuitarManager.Controllers
         public async Task<IActionResult> GetAllStringTypes([FromQuery] GetStringTypesRequest request)
         {
             var response = await this.mediator.Send(request);
-            return this.Ok(request);
+            return this.Ok(response);
+        }
+
+        [HttpPost]
+        [Route("")]
+        public async Task<IActionResult> AddStringType([FromBody] AddStringTypeRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
         }
     }
 }

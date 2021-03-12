@@ -18,7 +18,15 @@ namespace GuitarManager.Controllers
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllSounds([FromQuery] GetGuitarTypesRequest request)
+        public async Task<IActionResult> GetAllGuitarTypes([FromQuery] GetGuitarTypesRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
+        [HttpPost]
+        [Route("")]
+        public async Task<IActionResult> AddGuitarType([FromBody] AddGuitarTypeRequest request)
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);
