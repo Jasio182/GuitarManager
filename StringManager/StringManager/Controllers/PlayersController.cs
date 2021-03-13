@@ -32,7 +32,10 @@ namespace GuitarManager.Controllers
         public async Task<IActionResult> GetPlayerById([FromRoute] GetPlayerByIdRequest request)
         {
             var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            if (response.Data == null)
+                return this.NotFound();
+            else
+                return this.Ok(response);
         }
 
         [HttpPost]
@@ -41,6 +44,17 @@ namespace GuitarManager.Controllers
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);
+        }
+
+        [HttpDelete]
+        [Route("{PlayerId}")]
+        public async Task<IActionResult> RemovePlayer([FromRoute] RemovePlayerRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            if (response.Data == null)
+                return this.NotFound();
+            else
+                return this.Ok();
         }
     }
 }

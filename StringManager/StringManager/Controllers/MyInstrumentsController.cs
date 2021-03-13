@@ -33,5 +33,26 @@ namespace GuitarManager.Controllers
             return this.Ok(response);
         }
 
+        [HttpGet]
+        [Route("{MyInstrumentId}")]
+        public async Task<IActionResult> GetMyInstrumentById([FromRoute] GetMyInstrumentByIdRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            if (response.Data == null)
+                return this.NotFound();
+            else
+                return this.Ok(response);
+        }
+
+        [HttpDelete]
+        [Route("{MyInstrumentId}")]
+        public async Task<IActionResult> RemoveMyInstrument([FromRoute] RemoveMyInstrumentRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            if (response.Data == null)
+                return this.NotFound();
+            else
+                return this.Ok(response);
+        }
     }
 }

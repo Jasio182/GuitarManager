@@ -42,7 +42,7 @@ namespace GuitarManager.ApplicationServices.API.Handlers.StringInSet
             var removedStringInSet = await this.commandExecutor.Execute(command);
             return new RemoveStringInSetResponse()
             {
-                Data = removedStringInSet
+                Data = this.mapper.Map<Domain.Models.StringInSet>(removedStringInSet)
             };
         }
     }

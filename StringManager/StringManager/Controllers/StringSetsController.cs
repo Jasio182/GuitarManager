@@ -29,7 +29,10 @@ namespace GuitarManager.Controllers
         public async Task<IActionResult> GetStringSetById([FromRoute] GetStringSetByIdRequest request)
         {
             var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            if (response.Data == null)
+                return this.NotFound();
+            else
+                return this.Ok(response);
         }
 
         [HttpPost]

@@ -32,7 +32,10 @@ namespace GuitarManager.Controllers
         public async Task<IActionResult> GetInstalledStringByPositionAndMyInstrument([FromRoute] GetInstalledStringByPositionAndMyInstrumentRequest request)
         {
             var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            if (response.Data == null)
+                return this.NotFound();
+            else
+                return this.Ok(response);
         }
 
         [HttpPost]
@@ -41,6 +44,17 @@ namespace GuitarManager.Controllers
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);
+        }
+
+        [HttpDelete]
+        [Route("{StringPosition}/{MyInstrumentID}")]
+        public async Task<IActionResult> RemoveInstalledString([FromRoute] RemoveInstalledStringRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            if (response.Data == null)
+                return this.NotFound();
+            else
+                return this.Ok();
         }
     }
 }
