@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GuitarManager.ApplicationServices.API.Domain.StringInSet;
 using GuitarManager.DataAccess.CQRS;
+using GuitarManager.DataAccess.CQRS.Commands.StringInSet;
 using GuitarManager.DataAccess.CQRS.Queries.StringInSet;
 using MediatR;
 using System.Threading;
@@ -8,17 +9,20 @@ using System.Threading.Tasks;
 
 namespace GuitarManager.ApplicationServices.API.Handlers.StringInSet
 {
-    public class GetStringInSetByStringSetAndPositionHandler : IRequestHandler<GetStringInSetByStringSetAndPositionRequest, GetStringInSetByStringSetAndPositionResponse>
+    class RemoveStringInSetHandler : IRequestHandler<RemoveStringInSetRequest, RemoveStringInSetResponse>
     {
         private readonly IMapper mapper;
+        private readonly ICommandExecutor commandExecutor;
         private readonly IQueryExecutor queryExecutor;
 
-        public GetStringInSetByStringSetAndPositionHandler(IMapper mapper, IQueryExecutor queryExecutor)
+        public RemoveStringInSetHandler(IMapper mapper, ICommandExecutor commandExecutor, IQueryExecutor queryExecutor)
         {
             this.mapper = mapper;
+            this.commandExecutor = commandExecutor;
             this.queryExecutor = queryExecutor;
         }
-        public async Task<GetStringInSetByStringSetAndPositionResponse> Handle(GetStringInSetByStringSetAndPositionRequest request, CancellationToken cancellationToken)
+
+        public async Task<RemoveStringInSetResponse> Handle(RemoveStringInSetRequest request, CancellationToken cancellationToken)
         {
             var query = new GetStringInSetByStringSetAndPositionQuery()
             {
@@ -26,17 +30,20 @@ namespace GuitarManager.ApplicationServices.API.Handlers.StringInSet
                 StringSetID = request.StringSetID
             };
             var stringInSet = await this.queryExecutor.Execute(query);
-            if (stringInSet.StringPosition == request.StringPosition && stringInSet.StringSetID == request.StringSetID)
-                return new GetStringInSetByStringSetAndPositionResponse()
+            if (stringInSet == null)
+                return new RemoveStringInSetResponse()
                 {
                     Data = null
                 };
-            var mappedStringInSet = mapper.Map<Domain.Models.StringInSet>(stringInSet);
-            var response = new GetStringInSetByStringSetAndPositionResponse()
+            var command = new RemoveStringInSetCommand()
             {
-                Data = mappedStringInSet
+                Parameter = stringInSet
             };
-            return response;
+            var removedStringInSet = await this.commandExecutor.Execute(command);
+            return new RemoveStringInSetResponse()
+            {
+                Data = removedStringInSet
+            };
         }
     }
 }

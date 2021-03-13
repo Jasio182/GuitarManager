@@ -39,5 +39,16 @@ namespace GuitarManager.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
+        [HttpDelete]
+        [Route("{StringPosition}/{StringSetID}")]
+        public async Task<IActionResult> RemoveStringInSet([FromRoute] RemoveStringInSetRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            if (response.Data == null)
+                return this.NotFound();
+            else
+                return this.Ok();
+        }
     }
 }
