@@ -31,5 +31,17 @@ namespace GuitarManager.Controllers
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
+
+        [HttpPut]
+        [Route("{guitarTypeId}")]
+        public async Task<IActionResult> UpdateGuitarType([FromBody] UpdateGuitarTypeRequest request, int guitarTypeId)
+        {
+            request.guitarTypeId = guitarTypeId;
+            var response = await this.mediator.Send(request);
+            if (response.Data == null)
+                return this.NotFound();
+            else
+                return this.Ok(response);
+        }
     }
 }

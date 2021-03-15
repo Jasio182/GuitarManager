@@ -1,13 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace GuitarManager.DataAccess.CQRS.Commands.GuitarManufacturer
 {
-    public class AddGuitarManufacturerCommand : CommandBase<Entities.GuitarManufacturer, Entities.GuitarManufacturer>
+    public class UpdateGuitarManufacturerCommand : CommandBase<Entities.GuitarManufacturer, Entities.GuitarManufacturer>
     {
         public override async Task<Entities.GuitarManufacturer> Execute(GuitarManagerStorageContext context)
         {
-            await context.GuitarManufacturers.AddAsync(this.Parameter);
+            context.GuitarManufacturers.Update(this.Parameter);
             await context.SaveChangesAsync();
             return this.Parameter;
         }

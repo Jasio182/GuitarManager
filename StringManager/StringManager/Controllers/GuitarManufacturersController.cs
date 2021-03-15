@@ -1,9 +1,6 @@
 ﻿using GuitarManager.ApplicationServices.API.Domain.GuitarManufacturer;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GuitarManager.Controllers
@@ -33,6 +30,18 @@ namespace GuitarManager.Controllers
         {
             var response = await this.mediator.Send(request);
             return this.Ok(response);
+        }
+
+        [HttpPut]
+        [Route("{guitarManufacturerId}")]
+        public async Task<IActionResult> UpdateGuitarManufacturer([FromBody] UpdateGuitarManufacturerRequest request, int guitarManufacturerId)
+        {
+            request.guitarManufacturerId = guitarManufacturerId;
+            var response = await this.mediator.Send(request);
+            if (response.Data == null)
+                return this.NotFound();
+            else
+                return this.Ok(response);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace GuitarManager.DataAccess.CQRS.Queries.InstalledString
         public int StringPosition { get; set; }
 
         public int MyInstrumentID { get; set; }
-        public override Task<Entities.InstalledString> Execute(GuitarManagerStorageContext context) =>
-            context.InstalledStrings.FirstOrDefaultAsync(x => x.StringPosition == this.StringPosition && x.MyInstrumentID == this.MyInstrumentID);
+        public override async Task<Entities.InstalledString> Execute(GuitarManagerStorageContext context) =>
+           await context.InstalledStrings.FirstOrDefaultAsync(x => x.StringPosition == this.StringPosition && x.MyInstrumentID == this.MyInstrumentID);
     }
 }

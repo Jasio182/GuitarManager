@@ -8,6 +8,10 @@ namespace GuitarManager.ApplicationServices.Profiles
     {
         public GuitarTypesProfile()
         {
+            this.CreateMap<UpdateGuitarTypeRequest, DataAccess.Entities.GuitarType>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.guitarTypeId))
+            .ForMember(x => x.Type, y => y.MapFrom(z => z.Type));
+
             this.CreateMap<AddGuitarTypeRequest, DataAccess.Entities.GuitarType>()
             .ForMember(x => x.Type, y => y.MapFrom(z => z.Type));
 

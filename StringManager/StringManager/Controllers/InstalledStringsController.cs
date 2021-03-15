@@ -56,5 +56,18 @@ namespace GuitarManager.Controllers
             else
                 return this.Ok();
         }
+
+        [HttpPut]
+        [Route("{stringPosition}/{myInstrumentID}")]
+        public async Task<IActionResult> UpdateInstalledString([FromBody] UpdateInstalledStringRequest request, int myInstrumentID, int stringPosition)
+        {
+            request.routeMyInstrumentID = myInstrumentID;
+            request.routeStringPosition = stringPosition;
+            var response = await this.mediator.Send(request);
+            if (response.Data == null)
+                return this.NotFound();
+            else
+                return this.Ok(response);
+        }
     }
 }

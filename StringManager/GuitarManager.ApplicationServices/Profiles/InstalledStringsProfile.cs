@@ -8,6 +8,12 @@ namespace GuitarManager.ApplicationServices.Profiles
     {
         public InstalledStringsProfile()
         {
+            this.CreateMap<UpdateInstalledStringRequest, DataAccess.Entities.InstalledString>()
+             .ForMember(x => x.StringPosition, y => y.MapFrom(z => z.StringPosition))
+             .ForMember(x => x.StringID, y => y.MapFrom(z => z.StringID))
+             .ForMember(x => x.SoundID, y => y.MapFrom(z => z.SoundID))
+             .ForMember(x => x.MyInstrumentID, y => y.MapFrom(z => z.MyInstrumentID));
+
             this.CreateMap<AddInstalledStringRequest, DataAccess.Entities.InstalledString>()
              .ForMember(x => x.StringPosition, y => y.MapFrom(z => z.StringPosition))
              .ForMember(x => x.StringID, y => y.MapFrom(z => z.StringID))
