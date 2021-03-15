@@ -9,6 +9,10 @@ namespace GuitarManager.ApplicationServices.Profiles
     {
         public StringManufacturersProfile()
         {
+            this.CreateMap<UpdateStringManufacturerRequest, DataAccess.Entities.StringManufacturer>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.stringManufacturerId))
+            .ForMember(x => x.StringManufacturerName, y => y.MapFrom(z => z.StringManufacturerName));
+
             this.CreateMap<AddStringManufacturerRequest ,DataAccess.Entities.StringManufacturer>()
             .ForMember(x => x.StringManufacturerName, y => y.MapFrom(z => z.StringManufacturerName));
 

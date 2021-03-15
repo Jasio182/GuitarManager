@@ -8,6 +8,10 @@ namespace GuitarManager.ApplicationServices.Profiles
     {
         public StringTypesProfile()
         {
+            this.CreateMap<UpdateStringTypeRequest, DataAccess.Entities.StringType>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.stringTypeId))
+            .ForMember(x => x.Type, y => y.MapFrom(z => z.Type));
+
             this.CreateMap<AddStringTypeRequest, DataAccess.Entities.StringType > ()
             .ForMember(x => x.Type, y => y.MapFrom(z => z.Type));
 

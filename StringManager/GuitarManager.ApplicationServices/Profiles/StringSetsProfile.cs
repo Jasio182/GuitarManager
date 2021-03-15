@@ -8,6 +8,12 @@ namespace GuitarManager.ApplicationServices.Profiles
     {
         public StringSetsProfile()
         {
+            this.CreateMap<UpdateStringSetRequest, DataAccess.Entities.StringSet>()
+           .ForMember(x => x.Id, y => y.MapFrom(z => z.stringSetId))
+           .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
+           .ForMember(x => x.NumberOfStrings, y => y.MapFrom(z => z.NumberOfStrings))
+           .ForMember(x => x.GuitarTypeID, y => y.MapFrom(z => z.GuitarTypeID));
+
             this.CreateMap<AddStringSetRequest, DataAccess.Entities.StringSet>()
            .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
            .ForMember(x => x.NumberOfStrings, y => y.MapFrom(z => z.NumberOfStrings))
