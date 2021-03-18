@@ -10,6 +10,8 @@ using MediatR;
 using GuitarManager.ApplicationServices.API.Domain;
 using GuitarManager.ApplicationServices.Profiles;
 using GuitarManager.DataAccess.CQRS;
+using FluentValidation.AspNetCore;
+using GuitarManager.ApplicationServices.API.Validators;
 
 namespace GuitarManager
 {
@@ -25,6 +27,9 @@ namespace GuitarManager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvcCore().AddFluentValidation(
+                fv => fv.RegisterValidatorsFromAssemblyContaining<AddGuitarManufacturerRequestValidator>());
+
             services.AddTransient<ICommandExecutor, CommandExecutor>();
 
             services.AddTransient<IQueryExecutor, QueryExecutor>();

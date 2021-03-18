@@ -67,3 +67,6 @@ D:\Repositories\StringManager\StringManager\StringManager\bin\Debug\net5.0\Guita
 D:\Repositories\StringManager\StringManager\StringManager\bin\Debug\net5.0\GuitarManager.ApplicationServices.pdb
 D:\Repositories\StringManager\StringManager\StringManager\bin\Debug\net5.0\AutoMapper.dll
 D:\Repositories\StringManager\StringManager\StringManager\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Repositories\StringManager\StringManager\StringManager\bin\Debug\net5.0\FluentValidation.dll
+D:\Repositories\StringManager\StringManager\StringManager\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+D:\Repositories\StringManager\StringManager\StringManager\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
