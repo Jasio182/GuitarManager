@@ -30,5 +30,11 @@ namespace GuitarManager.DataAccess
         public DbSet<StringType> StringTypes { get; set; }
 
         public DbSet<Player> Players { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<InstalledString>().HasIndex(x => new { x.MyInstrumentID, x.StringPosition }).IsUnique();
+            modelBuilder.Entity<StringInSet>().HasIndex(x => new { x.StringSetID, x.StringPosition }).IsUnique();
+        }
     }
 }
