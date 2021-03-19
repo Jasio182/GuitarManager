@@ -12,6 +12,7 @@ using GuitarManager.ApplicationServices.Profiles;
 using GuitarManager.DataAccess.CQRS;
 using FluentValidation.AspNetCore;
 using GuitarManager.ApplicationServices.API.Validators.GuitarManufacturer;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GuitarManager
 {
@@ -29,6 +30,11 @@ namespace GuitarManager
         {
             services.AddMvcCore().AddFluentValidation(
                 fv => fv.RegisterValidatorsFromAssemblyContaining<AddGuitarManufacturerRequestValidator>());
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
             services.AddTransient<ICommandExecutor, CommandExecutor>();
 

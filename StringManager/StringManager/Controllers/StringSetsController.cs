@@ -39,6 +39,10 @@ namespace GuitarManager.Controllers
         [Route("")]
         public async Task<IActionResult> AddStringSet([FromBody] AddStringSetRequest request)
         {
+            if (this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST");
+            }
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
@@ -47,6 +51,10 @@ namespace GuitarManager.Controllers
         [Route("{stringSetId}")]
         public async Task<IActionResult> UpdateMyInstrument([FromBody] UpdateStringSetRequest request, int stringSetId)
         {
+            if (this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST");
+            }
             request.stringSetId = stringSetId;
             var response = await this.mediator.Send(request);
             if (response.Data == null)

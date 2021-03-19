@@ -42,6 +42,10 @@ namespace GuitarManager.Controllers
         [Route("")]
         public async Task<IActionResult> AddInstalledString([FromBody] AddInstalledStringRequest request)
         {
+            if (this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST");
+            }
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
@@ -61,6 +65,10 @@ namespace GuitarManager.Controllers
         [Route("{stringPosition}/{myInstrumentID}")]
         public async Task<IActionResult> UpdateInstalledString([FromBody] UpdateInstalledStringRequest request, int myInstrumentID, int stringPosition)
         {
+            if (this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST");
+            }
             request.routeMyInstrumentID = myInstrumentID;
             request.routeStringPosition = stringPosition;
             var response = await this.mediator.Send(request);

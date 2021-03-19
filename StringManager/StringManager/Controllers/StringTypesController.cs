@@ -28,6 +28,10 @@ namespace GuitarManager.Controllers
         [Route("")]
         public async Task<IActionResult> AddStringType([FromBody] AddStringTypeRequest request)
         {
+            if (this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST");
+            }
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
@@ -36,6 +40,10 @@ namespace GuitarManager.Controllers
         [Route("{stringTypeId}")]
         public async Task<IActionResult> UpdateMyInstrument([FromBody] UpdateStringTypeRequest request, int stringTypeId)
         {
+            if (this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST");
+            }
             request.stringTypeId = stringTypeId;
             var response = await this.mediator.Send(request);
             if (response.Data == null)

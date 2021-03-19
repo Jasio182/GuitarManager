@@ -42,6 +42,10 @@ namespace GuitarManager.Controllers
         [Route("")]
         public async Task<IActionResult> AddInstrument([FromBody] AddInstrumentRequest request)
         {
+            if (this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST");
+            }
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
@@ -50,6 +54,10 @@ namespace GuitarManager.Controllers
         [Route("{instrumentId}")]
         public async Task<IActionResult> GetInstrumentById([FromBody] UpdateInstrumentRequest request, int instrumentId)
         {
+            if (this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST");
+            }
             request.instrumentId = instrumentId;
             var response = await this.mediator.Send(request);
             if (response.Data == null)

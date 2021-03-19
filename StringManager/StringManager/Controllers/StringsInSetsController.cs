@@ -36,6 +36,10 @@ namespace GuitarManager.Controllers
         [Route("")]
         public async Task<IActionResult> AddStringInSet([FromBody] AddStringInSetRequest request)
         {
+            if (this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST");
+            }
             var response = await this.mediator.Send(request);
             return this.Ok(response);
         }
@@ -55,6 +59,10 @@ namespace GuitarManager.Controllers
         [Route("{stringPosition}/{stringSetID}")]
         public async Task<IActionResult> UpdateInstalledString([FromBody] UpdateStringInSetRequest request, int stringSetID, int stringPosition)
         {
+            if (this.ModelState.IsValid)
+            {
+                return this.BadRequest("BAD_REQUEST");
+            }
             request.routeStringSetID = stringSetID;
             request.routeStringPosition = stringPosition;
             var response = await this.mediator.Send(request);
