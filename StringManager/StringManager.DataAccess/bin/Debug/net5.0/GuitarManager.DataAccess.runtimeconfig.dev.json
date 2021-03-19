@@ -2,7 +2,9 @@
   "runtimeOptions": {
     "additionalProbingPaths": [
       "C:\\Users\\Jasio\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Jasio\\.nuget\\packages"
+      "C:\\Users\\Jasio\\.nuget\\packages",
+      "D:\\VisualStudio19\\NarzędziaZestawySDK\\NuGetPackages",
+      "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
     ]
   }
 }

@@ -1,13 +1,13 @@
 ﻿using FluentValidation;
 using GuitarManager.ApplicationServices.API.Domain.GuitarManufacturer;
 
-namespace GuitarManager.ApplicationServices.API.Validators
+namespace GuitarManager.ApplicationServices.API.Validators.GuitarManufacturer
 {
     public class AddGuitarManufacturerRequestValidator : AbstractValidator<AddGuitarManufacturerRequest>
     {
         public AddGuitarManufacturerRequestValidator()
         {
-            this.RuleFor(x => x.GuitarManufacturerName).Length(0, 150).NotEmpty();
+            RuleFor(x => x.GuitarManufacturerName).Length(0, 150).NotEmpty();
         }
     }
 }

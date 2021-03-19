@@ -11,7 +11,7 @@ using GuitarManager.ApplicationServices.API.Domain;
 using GuitarManager.ApplicationServices.Profiles;
 using GuitarManager.DataAccess.CQRS;
 using FluentValidation.AspNetCore;
-using GuitarManager.ApplicationServices.API.Validators;
+using GuitarManager.ApplicationServices.API.Validators.GuitarManufacturer;
 
 namespace GuitarManager
 {
