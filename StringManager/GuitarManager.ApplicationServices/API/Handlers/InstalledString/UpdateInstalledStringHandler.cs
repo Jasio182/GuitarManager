@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
+using GuitarManager.ApplicationServices.API.Domain.ErrorHandling;
 using GuitarManager.ApplicationServices.API.Domain.InstalledString;
 using GuitarManager.DataAccess.CQRS;
 using GuitarManager.DataAccess.CQRS.Commands.InstalledString;
 using GuitarManager.DataAccess.CQRS.Queries.InstalledString;
+using GuitarManager.DataAccess.CQRS.Queries.MyInstrument;
+using GuitarManager.DataAccess.CQRS.Queries.Sound;
+using GuitarManager.DataAccess.CQRS.Queries.String;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,10 +34,10 @@ namespace GuitarManager.ApplicationServices.API.Handlers.InstalledString
                 StringPosition = request.routeStringPosition
             };
             var gotInstalledString = await this.queryExecutor.Execute(query);
-            if(gotInstalledString == null)
+            if (!await CheckInstalledString.CheckIfCorrect(request, queryExecutor) && gotInstalledString != null)
                 return new UpdateInstalledStringResponse()
                 {
-                    Data = null
+                    Error = new Domain.ErrorModel(ErrorType.Conflict)
                 };
             var command = new UpdateInstalledStringCommand()
             {

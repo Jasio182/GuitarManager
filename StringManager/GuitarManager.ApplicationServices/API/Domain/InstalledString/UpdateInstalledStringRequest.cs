@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GuitarManager.ApplicationServices.API.Domain.InstalledString
 {
-    public class UpdateInstalledStringRequest : IRequest<UpdateInstalledStringResponse>
+    public class UpdateInstalledStringRequest : IRequest<UpdateInstalledStringResponse>, IAddAndUpdateInstalledStringProperties
     {
         [Required]
         public int routeStringPosition;

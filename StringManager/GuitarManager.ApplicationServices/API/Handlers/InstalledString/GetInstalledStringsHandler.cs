@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GuitarManager.ApplicationServices.API.Domain.ErrorHandling;
 using GuitarManager.ApplicationServices.API.Domain.InstalledString;
 using GuitarManager.DataAccess;
 using GuitarManager.DataAccess.CQRS;

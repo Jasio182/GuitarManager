@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GuitarManager.ApplicationServices.API.Domain.ErrorHandling;
 using GuitarManager.ApplicationServices.API.Domain.InstalledString;
 using GuitarManager.DataAccess.CQRS;
 using GuitarManager.DataAccess.CQRS.Queries.InstalledString;
@@ -27,6 +28,11 @@ namespace GuitarManager.ApplicationServices.API.Handlers.InstalledString
                 StringPosition = request.StringPosition
             };
             var installedString = await this.queryExecutor.Execute(query);
+            if (installedString == null)
+                return new GetInstalledStringByPositionAndMyInstrumentResponse()
+                {
+                    Error = new Domain.ErrorModel(ErrorType.NotFound)
+                };
             var mappedInstalledString = this.mapper.Map<Domain.Models.InstalledString>(installedString);
             var response = new GetInstalledStringByPositionAndMyInstrumentResponse()
             {

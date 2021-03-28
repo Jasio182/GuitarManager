@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GuitarManager.ApplicationServices.API.Domain.ErrorHandling;
 using GuitarManager.ApplicationServices.API.Domain.InstalledString;
 using GuitarManager.DataAccess.CQRS;
 using GuitarManager.DataAccess.CQRS.Commands.InstalledString;
@@ -33,7 +34,7 @@ namespace GuitarManager.ApplicationServices.API.Handlers.InstalledString
             if (installedString == null)
                 return new RemoveInstalledStringResponse()
                 {
-                    Data = null
+                    Error = new Domain.ErrorModel(ErrorType.NotFound)
                 };
             var command = new RemoveInstalledStringCommand()
             {

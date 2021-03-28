@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GuitarManager.ApplicationServices.API.Domain.ErrorHandling;
 using GuitarManager.ApplicationServices.API.Domain.GuitarManufacturer;
 using GuitarManager.DataAccess.CQRS;
 using GuitarManager.DataAccess.CQRS.Commands.GuitarManufacturer;
@@ -32,7 +33,7 @@ namespace GuitarManager.ApplicationServices.API.Handlers.GuitarManufacturer
             if (gotGuitarManufacturer == null)
                 return new UpdateGuitarManufacturerResponse()
                 {
-                    Data = null
+                    Error = new Domain.ErrorModel(ErrorType.NotFound)
                 };
             var command = new UpdateGuitarManufacturerCommand()
             {
