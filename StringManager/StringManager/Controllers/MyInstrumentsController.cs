@@ -8,63 +8,44 @@ namespace GuitarManager.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class MyInstrumentsController : ControllerBase
+    public class MyInstrumentsController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public MyInstrumentsController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
+        public MyInstrumentsController(IMediator mediator) : base(mediator) { }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllMyInstruments([FromQuery] GetMyInstrumentsRequest request)
+        public Task<IActionResult> GetAllMyInstruments([FromQuery] GetMyInstrumentsRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetMyInstrumentsRequest, GetMyInstrumentsResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddMyInstrument([FromBody] AddMyInstrumentRequest request)
+        public Task<IActionResult> AddMyInstrument([FromBody] AddMyInstrumentRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddMyInstrumentRequest, AddMyInstrumentResponse>(request);
         }
 
         [HttpGet]
         [Route("{MyInstrumentId}")]
-        public async Task<IActionResult> GetMyInstrumentById([FromRoute] GetMyInstrumentByIdRequest request)
+        public Task<IActionResult> GetMyInstrumentById([FromRoute] GetMyInstrumentByIdRequest request)
         {
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<GetMyInstrumentByIdRequest, GetMyInstrumentByIdResponse>(request);
         }
 
         [HttpDelete]
         [Route("{MyInstrumentId}")]
-        public async Task<IActionResult> RemoveMyInstrument([FromRoute] RemoveMyInstrumentRequest request)
+        public Task<IActionResult> RemoveMyInstrument([FromRoute] RemoveMyInstrumentRequest request)
         {
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok();
+            return this.HandleRequest<RemoveMyInstrumentRequest, RemoveMyInstrumentResponse>(request);
         }
 
         [HttpPut]
         [Route("{myInstrumentId}")]
-        public async Task<IActionResult> UpdateMyInstrument([FromBody] UpdateMyInstrumentRequest request, int myInstrumentId)
+        public Task<IActionResult> UpdateMyInstrument([FromBody] UpdateMyInstrumentRequest request, int myInstrumentId)
         {
             request.myInstrumentId = myInstrumentId;
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<UpdateMyInstrumentRequest, UpdateMyInstrumentResponse>(request);
         }
     }
 }

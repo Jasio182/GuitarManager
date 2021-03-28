@@ -7,49 +7,30 @@ namespace GuitarManager.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class GuitarTypesController : ControllerBase
+    public class GuitarTypesController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public GuitarTypesController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
+        public GuitarTypesController(IMediator mediator) : base(mediator) { }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllGuitarTypes([FromQuery] GetGuitarTypesRequest request)
+        public Task<IActionResult> GetAllGuitarTypes([FromQuery] GetGuitarTypesRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetGuitarTypesRequest, GetGuitarTypesResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddGuitarType([FromBody] AddGuitarTypeRequest request)
+        public Task<IActionResult> AddGuitarType([FromBody] AddGuitarTypeRequest request)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddGuitarTypeRequest, AddGuitarTypeResponse>(request);
         }
 
         [HttpPut]
         [Route("{guitarTypeId}")]
-        public async Task<IActionResult> UpdateGuitarType([FromBody] UpdateGuitarTypeRequest request, int guitarTypeId)
+        public Task<IActionResult> UpdateGuitarType([FromBody] UpdateGuitarTypeRequest request, int guitarTypeId)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
             request.guitarTypeId = guitarTypeId;
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<UpdateGuitarTypeRequest, UpdateGuitarTypeResponse>(request);
         }
     }
 }

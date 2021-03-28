@@ -7,69 +7,45 @@ namespace GuitarManager.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class StringsInSetsController : ControllerBase
+    public class StringsInSetsController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public StringsInSetsController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
+        public StringsInSetsController(IMediator mediator) : base(mediator) { }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllStringsInSets([FromQuery] GetStringsInSetsRequest request)
+        public Task<IActionResult> GetAllStringsInSets([FromQuery] GetStringsInSetsRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetStringsInSetsRequest, GetStringsInSetsResponse>(request);
         }
 
         [HttpGet]
         [Route("{StringPosition}/{StringSetID}")]
-        public async Task<IActionResult> GetStringInSetByStringSetAndPosition([FromRoute] GetStringInSetByStringSetAndPositionRequest request)
+        public Task<IActionResult> GetStringInSetByStringSetAndPosition([FromRoute] GetStringInSetByStringSetAndPositionRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetStringInSetByStringSetAndPositionRequest, GetStringInSetByStringSetAndPositionResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddStringInSet([FromBody] AddStringInSetRequest request)
+        public Task<IActionResult> AddStringInSet([FromBody] AddStringInSetRequest request)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddStringInSetRequest, AddStringInSetResponse>(request);
         }
 
         [HttpDelete]
         [Route("{StringPosition}/{StringSetID}")]
-        public async Task<IActionResult> RemoveStringInSet([FromRoute] RemoveStringInSetRequest request)
+        public Task<IActionResult> RemoveStringInSet([FromRoute] RemoveStringInSetRequest request)
         {
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok();
+            return this.HandleRequest<RemoveStringInSetRequest, RemoveStringInSetResponse>(request);
         }
 
         [HttpPut]
         [Route("{stringPosition}/{stringSetID}")]
-        public async Task<IActionResult> UpdateInstalledString([FromBody] UpdateStringInSetRequest request, int stringSetID, int stringPosition)
+        public Task<IActionResult> UpdateInstalledString([FromBody] UpdateStringInSetRequest request, int stringSetID, int stringPosition)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
             request.routeStringSetID = stringSetID;
             request.routeStringPosition = stringPosition;
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<UpdateStringInSetRequest, UpdateStringInSetResponse>(request);
         }
     }
 }

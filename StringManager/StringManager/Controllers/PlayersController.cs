@@ -1,80 +1,50 @@
 ﻿using GuitarManager.ApplicationServices.API.Domain.Player;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GuitarManager.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PlayersController : ControllerBase
+    public class PlayersController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public PlayersController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
+        public PlayersController(IMediator mediator) : base(mediator) { }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllPlayers([FromQuery] GetPlayersRequest request)
+        public Task<IActionResult> GetAllPlayers([FromQuery] GetPlayersRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetPlayersRequest, GetPlayersResponse>(request);
         }
 
         [HttpGet]
         [Route("{PlayerId}")]
-        public async Task<IActionResult> GetPlayerById([FromRoute] GetPlayerByIdRequest request)
+        public Task<IActionResult> GetPlayerById([FromRoute] GetPlayerByIdRequest request)
         {
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<GetPlayerByIdRequest, GetPlayerByIdResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddPlayer([FromBody] AddPlayerRequest request)
+        public Task<IActionResult> AddPlayer([FromBody] AddPlayerRequest request)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddPlayerRequest, AddPlayerResponse>(request);
         }
 
         [HttpDelete]
         [Route("{PlayerId}")]
-        public async Task<IActionResult> RemovePlayer([FromRoute] RemovePlayerRequest request)
+        public Task<IActionResult> RemovePlayer([FromRoute] RemovePlayerRequest request)
         {
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok();
+            return this.HandleRequest<RemovePlayerRequest, RemovePlayerResponse>(request);
         }
 
         [HttpPut]
         [Route("{playerId}")]
-        public async Task<IActionResult> UpdateMyInstrument([FromBody] UpdatePlayerRequest request, int playerId)
+        public Task<IActionResult> UpdateMyInstrument([FromBody] UpdatePlayerRequest request, int playerId)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
             request.playerId = playerId;
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<UpdatePlayerRequest, UpdatePlayerResponse>(request);
         }
     }
 }

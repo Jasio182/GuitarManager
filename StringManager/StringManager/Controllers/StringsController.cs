@@ -7,60 +7,37 @@ namespace GuitarManager.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class StringsController : ControllerBase
+    public class StringsController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public StringsController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
+        public StringsController(IMediator mediator) : base(mediator) { }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllStrings([FromQuery] GetStringsRequest request)
+        public Task<IActionResult> GetAllStrings([FromQuery] GetStringsRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetStringsRequest, GetStringsResponse>(request);
         }
 
         [HttpGet]
         [Route("{StringId}")]
-        public async Task<IActionResult> GetStringById([FromRoute] GetStringByIdRequest request)
+        public Task<IActionResult> GetStringById([FromRoute] GetStringByIdRequest request)
         {
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<GetStringByIdRequest, GetStringByIdResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddString([FromBody] AddStringRequest request)
+        public Task<IActionResult> AddString([FromBody] AddStringRequest request)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddStringRequest, AddStringResponse>(request);
         }
 
         [HttpPut]
         [Route("{stringId}")]
-        public async Task<IActionResult> UpdateMyInstrument([FromBody] UpdateStringRequest request, int stringId)
+        public Task<IActionResult> UpdateMyInstrument([FromBody] UpdateStringRequest request, int stringId)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
             request.stringId = stringId;
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<UpdateStringRequest, UpdateStringResponse>(request);
         }
     }
 }

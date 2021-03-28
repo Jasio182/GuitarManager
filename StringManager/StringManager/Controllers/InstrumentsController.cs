@@ -1,69 +1,43 @@
 ﻿using GuitarManager.ApplicationServices.API.Domain.Instrument;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GuitarManager.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class InstrumentsController : ControllerBase
+    public class InstrumentsController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public InstrumentsController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
+        public InstrumentsController(IMediator mediator) : base(mediator) { }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllInstruments([FromQuery] GetInstrumentsRequest request)
+        public Task<IActionResult> GetAllInstruments([FromQuery] GetInstrumentsRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetInstrumentsRequest, GetInstrumentsResponse>(request);
         }
 
         [HttpGet]
         [Route("{InstrumentId}")]
-        public async Task<IActionResult> GetInstrumentById([FromRoute] GetInstrumentByIdRequest request)
+        public Task<IActionResult> GetInstrumentById([FromRoute] GetInstrumentByIdRequest request)
         {
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<GetInstrumentByIdRequest, GetInstrumentByIdResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddInstrument([FromBody] AddInstrumentRequest request)
+        public Task<IActionResult> AddInstrument([FromBody] AddInstrumentRequest request)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddInstrumentRequest, AddInstrumentResponse>(request);
         }
 
         [HttpPut]
         [Route("{instrumentId}")]
-        public async Task<IActionResult> GetInstrumentById([FromBody] UpdateInstrumentRequest request, int instrumentId)
+        public Task<IActionResult> GetInstrumentById([FromBody] UpdateInstrumentRequest request, int instrumentId)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
             request.instrumentId = instrumentId;
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<UpdateInstrumentRequest, UpdateInstrumentResponse>(request);
         }
     }
 }

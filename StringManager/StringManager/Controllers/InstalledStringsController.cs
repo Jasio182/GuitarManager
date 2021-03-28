@@ -1,81 +1,51 @@
 ﻿using GuitarManager.ApplicationServices.API.Domain.InstalledString;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GuitarManager.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class InstalledStringsController : ControllerBase
+    public class InstalledStringsController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public InstalledStringsController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
+        public InstalledStringsController(IMediator mediator) : base(mediator) { }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllInstalledStrings([FromQuery] GetInstalledStringsRequest request)
+        public Task<IActionResult> GetAllInstalledStrings([FromQuery] GetInstalledStringsRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetInstalledStringsRequest, GetInstalledStringsResponse>(request);
         }
 
         [HttpGet]
         [Route("{StringPosition}/{MyInstrumentID}")]
-        public async Task<IActionResult> GetInstalledStringByPositionAndMyInstrument([FromRoute] GetInstalledStringByPositionAndMyInstrumentRequest request)
+        public Task<IActionResult> GetInstalledStringByPositionAndMyInstrument([FromRoute] GetInstalledStringByPositionAndMyInstrumentRequest request)
         {
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<GetInstalledStringByPositionAndMyInstrumentRequest, GetInstalledStringByPositionAndMyInstrumentResponse>(request);
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<IActionResult> AddInstalledString([FromBody] AddInstalledStringRequest request)
+        public Task<IActionResult> AddInstalledString([FromBody] AddInstalledStringRequest request)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddInstalledStringRequest, AddInstalledStringResponse>(request);
         }
 
         [HttpDelete]
         [Route("{StringPosition}/{MyInstrumentID}")]
-        public async Task<IActionResult> RemoveInstalledString([FromRoute] RemoveInstalledStringRequest request)
+        public Task<IActionResult> RemoveInstalledString([FromRoute] RemoveInstalledStringRequest request)
         {
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok();
+            return this.HandleRequest<RemoveInstalledStringRequest, RemoveInstalledStringResponse>(request);
         }
 
         [HttpPut]
         [Route("{stringPosition}/{myInstrumentID}")]
-        public async Task<IActionResult> UpdateInstalledString([FromBody] UpdateInstalledStringRequest request, int myInstrumentID, int stringPosition)
+        public Task<IActionResult> UpdateInstalledString([FromBody] UpdateInstalledStringRequest request, int myInstrumentID, int stringPosition)
         {
-            if (this.ModelState.IsValid)
-            {
-                return this.BadRequest("BAD_REQUEST");
-            }
             request.routeMyInstrumentID = myInstrumentID;
             request.routeStringPosition = stringPosition;
-            var response = await this.mediator.Send(request);
-            if (response.Data == null)
-                return this.NotFound();
-            else
-                return this.Ok(response);
+            return this.HandleRequest<UpdateInstalledStringRequest, UpdateInstalledStringResponse>(request);
         }
     }
 }
